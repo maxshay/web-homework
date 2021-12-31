@@ -2,10 +2,11 @@ use Mix.Config
 
 # Configure your database
 config :homework, Homework.Repo,
-  username: System.get_env("POSTGRES_USER") || "postgres",
-  password: System.get_env("POSTGRES_PASSWORD") || "postgres",
+  username: System.get_env("POSTGRES_USER") || "taxi",
+  password: System.get_env("POSTGRES_PASSWORD") || "taxi",
   hostname: System.get_env("POSTGRES_HOST") || "localhost",
   database: System.get_env("POSTGRES_DATABASE") || "homework_dev",
+  port: String.to_integer(System.get_env("POSTGRES_DATABASE") || "5431"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
