@@ -5,7 +5,13 @@ export default {
     src: "/dist",
   },
   plugins: ["@snowpack/plugin-postcss"],
-  routes: [],
+  routes: [
+    {
+      match: "routes",
+      src: ".*",
+      dest: "/index.html",
+    },
+  ],
   optimize: {
     treeshake: true,
   },

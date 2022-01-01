@@ -7,27 +7,41 @@ import {
   Outlet,
 } from "react-router-dom";
 import { Home } from "./pages";
+import { Transactions } from "./pages";
 
 function Layout() {
   return (
-    <div id="main-content" className="p-2">
-      <div>
-        <nav className="">
-          <ul className="flex ">
-            <li>
-              <button className="mainButton">
-                <Link to="/">Home</Link>
-              </button>
-            </li>
-            <li className="ml-2">
-              <button className="mainButton">
-                <Link to="/another">Another route</Link>
-              </button>
-            </li>
-          </ul>
-        </nav>
+    <div id="main-content">
+      <div className="flex flex-row">
+        <div className="w-56 h-screen bg-gray-200 border-r border-gray-300">
+          <nav className="p-2">
+            <ul className="">
+              <li>
+                <Link to="/">
+                  <button className="mainButton w-full font-bold">Home</button>
+                </Link>
+              </li>
+              <li className="mt-2">
+                <Link to="/transactions">
+                  <button className="mainButton w-full font-bold">
+                    Transactions
+                  </button>
+                </Link>
+              </li>
+              <li className="mt-2">
+                <Link to="/another">
+                  <button className="mainButton w-full font-bold">
+                    Another route
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div className="p-2">
+          <Outlet />
+        </div>
       </div>
-      <Outlet />
     </div>
   );
 }
@@ -38,6 +52,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route element={<Transactions />} path="/transactions" />
           <Route
             element={<div>Content for /another route</div>}
             path="/another"
