@@ -10,6 +10,16 @@ use Mix.Config
 config :homework,
   ecto_repos: [Homework.Repo]
 
+
+cors_whitelist_str =
+  System.get_env("CORS_WHITELIST") || "http://localhost:3000"
+
+
+config :cors_plug,
+  origin: String.split(cors_whitelist_str),
+  max_age: 86400,
+  methods: ["GET", "POST"]
+
 # Configures the endpoint
 config :homework, HomeworkWeb.Endpoint,
   url: [host: "localhost"],
