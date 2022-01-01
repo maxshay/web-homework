@@ -4,7 +4,7 @@ defmodule Homework.Users.User do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "users" do
-    field(:dob, :string)
+    field(:dob, :date)
     field(:first_name, :string)
     field(:last_name, :string)
 

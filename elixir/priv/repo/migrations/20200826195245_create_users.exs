@@ -6,7 +6,7 @@ defmodule Homework.Repo.Migrations.CreateUsers do
       add(:id, :uuid, primary_key: true)
       add(:first_name, :string)
       add(:last_name, :string)
-      add(:dob, :string)
+      add(:dob, :date)
 
       timestamps()
     end
