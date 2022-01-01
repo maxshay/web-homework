@@ -2,8 +2,6 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GetTransactions } from "../gql";
 
-console.log(GetTransactions);
-
 function Transactions() {
   const { loading, error, data = {} } = useQuery(GetTransactions);
 
