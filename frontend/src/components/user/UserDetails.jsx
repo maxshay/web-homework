@@ -72,7 +72,7 @@ function UserDetails() {
         </div>
         <div>
           <h2 className="font-bold text-xl text-gray-400 mt-5">A Breakdown</h2>
-          <p>percentage per category spent vs total</p>
+          <p>percentage spent per category vs total spent</p>
           <UserChart data={user.transactions} />
         </div>
       </div>

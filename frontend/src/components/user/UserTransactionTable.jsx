@@ -1,6 +1,6 @@
 import React from "react";
 
-const formatPrice = (amount) => "$" + amount.toString() + ".00";
+import { SpecialNumbers } from "..";
 
 export function UserTransactionTable({ data }) {
   return (
@@ -34,7 +34,7 @@ export function UserTransactionTable({ data }) {
               {r.description}
             </td>
             <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
-              {formatPrice(r.amount)}
+              <SpecialNumbers amount={r.amount} />
             </td>
             <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
               {r.category}

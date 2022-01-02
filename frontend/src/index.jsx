@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import AppRouter from "./AppRouter.jsx";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./network/apollo-client";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 ReactDOM.render(
   <React.StrictMode>

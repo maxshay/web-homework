@@ -25,7 +25,7 @@ export function UserChart({ data }) {
     ((totalPerCategory[t] / totalSpending) * 100).toFixed(2)
   );
 
-  console.log(categories, totalSpending, totalPerCategory, percentPerCategory);
+  // console.log(categories, totalSpending, totalPerCategory, percentPerCategory);
   const colors = categories.map((t) => random_rgba());
 
   const chartData = {
@@ -39,6 +39,21 @@ export function UserChart({ data }) {
       },
     ],
   };
+  const options = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function ({ label, formattedValue }) {
+            return ` ${label} ${formattedValue}%`;
+          },
+        },
+      },
+      title: {
+        display: true,
+        text: "Percentage spent per category vs total spent",
+      },
+    },
+  };
 
-  return <Pie data={chartData} />;
+  return <Pie data={chartData} options={options} />;
 }

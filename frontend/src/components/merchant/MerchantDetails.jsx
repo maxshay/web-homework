@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GetMerchant } from "../../gql";
 
-const formatPrice = (amount) => "$" + amount.toString() + ".00";
+import { SpecialNumbers } from "..";
 
 function MerchantDetails() {
   const { merchantId } = useParams();
@@ -94,7 +94,7 @@ function MerchantDetails() {
                 {t.insertedAt.replace("T", " ")}
               </td>
               <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
-                {formatPrice(t.amount)}
+                <SpecialNumbers amount={t.amount} />
               </td>
               <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
                 {t.category}
