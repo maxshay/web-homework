@@ -5,11 +5,17 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
+
+// components
 import { Navigation } from "./components";
+import { UserDetails } from "./components";
+import { MerchantDetails } from "./components";
+
+// pages
 import { Home } from "./pages";
 import { Transactions } from "./pages";
-import { Users } from "./pages";
-import { Merchants } from "./pages";
+import { User } from "./pages";
+import { Merchant } from "./pages";
 import { Participients } from "./pages";
 
 function Layout() {
@@ -31,10 +37,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route element={<Transactions />} path="/transactions" />
-          <Route element={<Participients />} path="/participients" />
-          <Route element={<Users />} path="/users" />
-          <Route element={<Merchants />} path="/merchants" />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/participients" element={<Participients />} />
+          <Route path="/user" element={<User />}>
+            <Route path=":userId" element={<UserDetails />} />
+          </Route>
+          <Route path="/merchant" element={<Merchant />}>
+            <Route path=":merchantId" element={<MerchantDetails />} />
+          </Route>
           <Route element={<div>Error 404: page not found</div>} path="*" />
         </Route>
       </Routes>

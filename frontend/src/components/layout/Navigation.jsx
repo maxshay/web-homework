@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function LoginButton({ type, setShowLogin }) {
   const navigate = useNavigate();
@@ -51,7 +51,12 @@ function LoginButton({ type, setShowLogin }) {
 }
 
 function Navigation() {
+  let location = useLocation();
   const [showLogin, setShowLogin] = useState(-1);
+
+  useEffect(() => {
+    setShowLogin(-1);
+  }, [location]);
 
   return (
     <div className="w-72 h-screen bg-gray-50 border-r border-gray-200 p-3">
