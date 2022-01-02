@@ -5,8 +5,6 @@ const makeDataTestId = (transactionId, fieldName) =>
   `transaction-${transactionId}-${fieldName}`;
 
 function TxTable({ data }) {
-  console.log(data);
-
   return (
     <div className="rounded mt-5">
       <table className="table-auto">
@@ -16,10 +14,10 @@ function TxTable({ data }) {
               Id
             </th>
             <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              User Id
+              Customer Id
             </th>
             <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              customer name
+              Customer name
             </th>
             <th className="px-4 py-2 text-blue-600 border border-blue-500">
               Desc.
@@ -63,7 +61,7 @@ function TxTable({ data }) {
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "userId")}
               >
-                {r.user.firstName}
+                {r.user.firstName} {r.user.lastName}
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
@@ -99,13 +97,13 @@ function TxTable({ data }) {
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "amount")}
               >
-                {r.amount}
+                $ {r.amount}
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "date")}
               >
-                {r.insertedAt}
+                {r.insertedAt.replace("T", "  ")}
               </td>
             </tr>
           ))}

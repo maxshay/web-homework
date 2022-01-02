@@ -14,6 +14,7 @@ export const GetTransactions = gql`
       insertedAt
       user {
         firstName
+        lastName
       }
     }
   }
