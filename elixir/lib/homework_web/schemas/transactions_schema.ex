@@ -25,6 +25,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
     field(:merchant, :merchant) do
       resolve(&TransactionsResolver.merchant/3)
     end
+
   end
 
   object :transaction_mutations do

@@ -1,5 +1,7 @@
 defmodule HomeworkWeb.Resolvers.MerchantsResolver do
   alias Homework.Merchants
+  alias Homework.Transactions
+
 
   @doc """
   Get a list of merchants
@@ -7,6 +9,28 @@ defmodule HomeworkWeb.Resolvers.MerchantsResolver do
   def merchants(_root, args, _info) do
     {:ok, Merchants.list_merchants(args)}
   end
+
+
+
+  @doc """
+  Gets a merchant
+  """
+  def merchant(_root, %{id: id}, _info) do
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        {:ok, Merchants.get_merchant(id)}
+
+      :error ->
+        {:error, "invalid id"}
+    end
+  end
+
+
+  def find_transactions(_root, args, _info) do
+    {:ok, Transactions.list_transactions(args)}
+  end
+
+
 
   @doc """
   Create a new merchant

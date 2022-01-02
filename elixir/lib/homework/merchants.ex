@@ -36,6 +36,7 @@ defmodule Homework.Merchants do
 
   """
   def get_merchant!(id), do: Repo.get!(Merchant, id)
+  def get_merchant(id), do: Repo.get(Merchant, id)
 
   @doc """
   Creates a merchant.
