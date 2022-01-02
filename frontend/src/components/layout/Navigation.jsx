@@ -18,9 +18,12 @@ function LoginButton({ type, setShowLogin }) {
 
   return (
     <div className="loginButtonPositioning p-2 bg-gray-100 border border-gray-100 rounded-sm shadow">
-      <div class="mb-4">
+      <div className="mb-4">
         <div className="flex justify-between mb-2">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
+          <label
+            className="block text-gray-700 text-sm font-bold"
+            htmlFor="username"
+          >
             {type === "user" ? "User login" : "Merchant login"}
           </label>
           <button

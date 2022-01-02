@@ -5,7 +5,22 @@ defmodule HomeworkWeb.Resolvers.UsersResolver do
   Get a list of users
   """
   def users(_root, args, _info) do
+
     {:ok, Users.list_users(args)}
+  end
+
+
+  @doc """
+  Gets a user
+  """
+  def user(_root, %{id: id}, _info) do
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        {:ok, Users.get_user(id)}
+
+      :error ->
+        {:error, "invalid id"}
+    end
   end
 
   @doc """

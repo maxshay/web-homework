@@ -1,5 +1,8 @@
 import React from "react";
 import { arrayOf, string, bool, number, shape } from "prop-types";
+import { Link } from "react-router-dom";
+
+const formatPrice = (amount) => "$" + amount.toString() + ".00";
 
 const makeDataTestId = (transactionId, fieldName) =>
   `transaction-${transactionId}-${fieldName}`;
@@ -55,13 +58,15 @@ function TxTable({ data }) {
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "userId")}
               >
-                {r.userId}
+                <Link to={`/user/${r.userId}`}>{r.userId}</Link>
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "userId")}
               >
-                {r.user.firstName} {r.user.lastName}
+                <Link to={`/user/${r.userId}`}>
+                  {r.user.firstName} {r.user.lastName}
+                </Link>
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
@@ -97,7 +102,7 @@ function TxTable({ data }) {
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "amount")}
               >
-                $ {r.amount}
+                {formatPrice(r.amount)}
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
