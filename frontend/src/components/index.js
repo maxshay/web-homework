@@ -1,4 +1,5 @@
 export { TxTable } from "./transactions/TxTable";
+export { EditTransaction } from "./transactions/EditTransaction";
 export { Navigation } from "./layout/Navigation";
 export { UserDetails } from "./user/UserDetails";
 export { UserChart } from "./user/UserChart";

@@ -11,6 +11,7 @@ import { Navigation } from "./components";
 import { UserDetails } from "./components";
 import { MerchantDetails } from "./components";
 import { AddModal } from "./components";
+import { EditTransaction } from "./components";
 
 // pages
 import { Home } from "./pages";
@@ -44,14 +45,19 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/transaction/:id" element={<EditTransaction />} />
           <Route path="/participients" element={<Participients />} />
           <Route path="/user" element={<User />}>
             <Route path=":userId" element={<UserDetails />} />
           </Route>
+
           <Route path="/merchant" element={<Merchant />}>
             <Route path=":merchantId" element={<MerchantDetails />} />
           </Route>
-          <Route element={<div>Error 404: page not found</div>} path="*" />
+          <Route
+            element={<div className="mt-5">Error 404: page not found</div>}
+            path="*"
+          />
         </Route>
       </Routes>
     </Router>
