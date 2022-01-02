@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 function LoginButton({ type, setShowLogin }) {
   const navigate = useNavigate();
-  const [loginName, setLoginName] = useState("");
+  const [loginId, setLoginId] = useState("");
 
   const handleLogin = () => {
-    if (loginName !== "") {
+    if (loginId !== "") {
       if (type === "user") {
-        navigate(`user/${loginName}`);
+        navigate(`user/${loginId}`);
       } else {
-        navigate(`merchant/${loginName}`);
+        navigate(`merchant/${loginId}`);
       }
     }
   };
@@ -34,13 +34,13 @@ function LoginButton({ type, setShowLogin }) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="username"
           type="text"
-          placeholder={`Enter ${type} name`}
-          value={loginName}
-          onChange={(e) => setLoginName(e.target.value)}
+          placeholder={`Enter ${type} id`}
+          value={loginId}
+          onChange={(e) => setLoginId(e.target.value)}
         />
       </div>
       <button
-        disabled={loginName === ""}
+        disabled={loginId === ""}
         className="mainButton"
         onClick={handleLogin}
       >
