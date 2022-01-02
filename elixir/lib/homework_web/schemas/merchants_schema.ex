@@ -5,7 +5,6 @@ defmodule HomeworkWeb.Schemas.MerchantsSchema do
   use Absinthe.Schema.Notation
 
   alias HomeworkWeb.Resolvers.MerchantsResolver
-  alias HomeworkWeb.Resolvers.TransactionsResolver
 
   object :merchant do
     field(:id, non_null(:id))
@@ -15,9 +14,7 @@ defmodule HomeworkWeb.Schemas.MerchantsSchema do
     field(:updated_at, :naive_datetime)
 
 
-    field(:transactions, list_of(:transaction)) do
-      resolve(&MerchantsResolver.find_transactions/3)
-    end
+    field(:transactions, list_of(:transaction))
   end
 
   object :merchant_mutations do

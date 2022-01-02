@@ -1,14 +1,10 @@
 import { gql } from "@apollo/client";
 
-export const GetUser = gql`
-  query GetUser($id: ID!) {
-    user(id: $id) {
+export const GetMerchant = gql`
+  query GetMerchant($id: ID!) {
+    merchant(id: $id) {
       id
-      firstName
-      lastName
-      insertedAt
-      dob
-
+      name
       transactions {
         amount
         description

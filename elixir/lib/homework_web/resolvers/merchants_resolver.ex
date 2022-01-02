@@ -25,13 +25,6 @@ defmodule HomeworkWeb.Resolvers.MerchantsResolver do
     end
   end
 
-
-  def find_transactions(_root, args, _info) do
-    {:ok, Transactions.list_transactions(args)}
-  end
-
-
-
   @doc """
   Create a new merchant
   """

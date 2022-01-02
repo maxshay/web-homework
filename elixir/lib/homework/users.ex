@@ -36,7 +36,7 @@ defmodule Homework.Users do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
-  def get_user(id), do: Repo.get(User, id)
+  def get_user(id), do: Repo.get(User, id) |> Repo.preload(:transactions)
 
   @doc """
   Creates a user.

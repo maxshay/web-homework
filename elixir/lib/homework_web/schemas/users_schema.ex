@@ -13,6 +13,8 @@ defmodule HomeworkWeb.Schemas.UsersSchema do
     field(:last_name, :string)
     field(:inserted_at, :naive_datetime)
     field(:updated_at, :naive_datetime)
+
+    field(:transactions, list_of(:transaction))
   end
 
   object :user_mutations do
