@@ -5,6 +5,8 @@ export const GetMerchant = gql`
     merchant(id: $id) {
       id
       name
+      description
+      insertedAt
       transactions {
         amount
         description
