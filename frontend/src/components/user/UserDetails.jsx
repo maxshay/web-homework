@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GetUser } from "../../gql";
 
+import { UserTransactionTable } from "./UserTransactionTable";
+
 function UserDetails() {
   const { userId } = useParams();
   const {
@@ -37,6 +39,8 @@ function UserDetails() {
 
   return (
     <div className="capitalize">
+      <hr className="my-5" />
+
       <p className="mt-4">
         <span className="inline-block min-w-[200px] font-bold">
           cusomer id:
@@ -57,6 +61,11 @@ function UserDetails() {
           {user.insertedAt.split("T")[0]}
         </li>
       </ul>
+      <hr className="my-5" />
+      <h2 className="font-bold text-xl text-gray-400 my-5">
+        Your Transactions
+      </h2>
+      <UserTransactionTable data={user.transactions} />
     </div>
   );
 }
