@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useMutation } from "@apollo/client";
+import { CreateTransaction } from "../../gql";
 
 import { useStore } from "../../store";
 
 export function AddModal() {
+  const [onCreateHandler, { data, loading, error }] =
+    useMutation(CreateTransaction);
+
   const modalOpen = useStore((state) => state.modalOpen);
   const setModal = useStore.getState().setModal;
 

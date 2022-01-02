@@ -58,14 +58,21 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   Deletes a transaction for an id
   """
   def delete_transaction(_root, %{id: id}, _info) do
-    transaction = Transactions.get_transaction!(id)
 
-    case Transactions.delete_transaction(transaction) do
-      {:ok, transaction} ->
-        {:ok, transaction}
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        transaction = Transactions.get_transaction!(id)
+        case Transactions.delete_transaction(transaction) do
+          {:ok, transaction} ->
+            {:ok, transaction}
 
-      error ->
-        {:error, "could not update transaction: #{inspect(error)}"}
+          error ->
+            {:error, "could not delete transaction: #{inspect(error)}"}
+        end
+
+      :error ->
+        {:error, "invalid id"}
     end
+
   end
 end

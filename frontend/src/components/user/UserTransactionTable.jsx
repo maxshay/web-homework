@@ -1,11 +1,19 @@
 import React from "react";
-
 import { SpecialNumbers } from "..";
-
+import { useQuery, useMutation } from "@apollo/client";
+import { GetUser } from "../../gql";
 import { useStore } from "../../store";
 
 export function UserTransactionTable({ data }) {
+  // const [onDeleteHandler, { d, loading, error }] = useMutation(DELETE_POST);
   const setModal = useStore.getState().setModal;
+
+  const handleDelete = () => {
+    if (confirm("are you sure you want to delete?") == true) {
+      alert("deleted");
+    }
+  };
+
   return (
     <table className="table-auto mt-5">
       <thead>
@@ -60,7 +68,9 @@ export function UserTransactionTable({ data }) {
               </button>
             </td>
             <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
-              <button className="underline bg-none">Delete</button>
+              <button className="underline bg-none" onClick={handleDelete}>
+                Delete
+              </button>
             </td>
           </tr>
         ))}
