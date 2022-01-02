@@ -10,7 +10,7 @@ function Transactions() {
   if (loading) {
     return (
       <div>
-        <h2 className="font-bold text-xl">Transactions</h2>
+        <h2 className="font-bold text-xl mt-4">Transactions</h2>
         <p>Loading...</p>
       </div>
     );
@@ -19,7 +19,7 @@ function Transactions() {
   if (error) {
     return (
       <div>
-        <h2 className="font-bold text-xl">Transactions</h2>
+        <h2 className="font-bold text-xl mt-4">Transactions</h2>
         <p>Error ¯\_(ツ)_/¯</p>
       </div>
     );
@@ -27,7 +27,7 @@ function Transactions() {
 
   return (
     <div>
-      <h2 className="font-bold text-xl my-2">All Transactions</h2>
+      <h2 className="font-bold text-xl my-4">All Transactions</h2>
       <TxTable data={data.transactions} />
     </div>
   );

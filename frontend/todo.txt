@@ -1,0 +1,11 @@
+- user add transaction
+- user edit transaction
+- user delete transaction
+ 
+- numbers to roman numerals
+
+- add pie chart for user transactions, spend by category
+
+- add toast notifications
+
+- i18n setting

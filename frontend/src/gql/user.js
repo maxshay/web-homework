@@ -10,6 +10,7 @@ export const GetUser = gql`
       dob
 
       transactions {
+        id
         amount
         description
         debit

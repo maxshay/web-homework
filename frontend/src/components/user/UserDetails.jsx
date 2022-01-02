@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GetUser } from "../../gql";
 
 import { UserTransactionTable } from "./UserTransactionTable";
+import { UserChart } from "./UserChart";
 
 function UserDetails() {
   const { userId } = useParams();
@@ -62,10 +63,18 @@ function UserDetails() {
         </li>
       </ul>
       <hr className="my-5" />
-      <h2 className="font-bold text-xl text-gray-400 my-5">
-        Your Transactions
-      </h2>
-      <UserTransactionTable data={user.transactions} />
+      <div className="grid grid-cols-1 sm:grid-cols-2">
+        <div>
+          <h2 className="font-bold text-xl text-gray-400 my-5">
+            Your Transactions
+          </h2>
+          <UserTransactionTable data={user.transactions} />
+        </div>
+        <div>
+          <h2 className="font-bold text-xl text-gray-400 my-5">A Breakdown</h2>
+          <UserChart data={user.transactions} />
+        </div>
+      </div>
     </div>
   );
 }
