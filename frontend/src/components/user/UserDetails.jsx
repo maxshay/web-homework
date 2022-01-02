@@ -17,8 +17,6 @@ function UserDetails() {
 
   if (loading) return <p>Loading...</p>;
 
-  console.log(error?.graphQLErrors);
-
   if (error)
     return (
       <div>

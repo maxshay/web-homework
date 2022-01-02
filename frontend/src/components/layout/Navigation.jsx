@@ -40,6 +40,7 @@ function LoginButton({ type, setShowLogin }) {
           placeholder={`Enter ${type} id`}
           value={loginId}
           onChange={(e) => setLoginId(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleLogin()}
         />
       </div>
       <button
