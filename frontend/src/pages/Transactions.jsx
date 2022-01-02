@@ -2,6 +2,8 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GetTransactions } from "../gql";
 
+import { TxTable } from "../components";
+
 function Transactions() {
   const { loading, error, data = {} } = useQuery(GetTransactions);
 
@@ -26,7 +28,7 @@ function Transactions() {
   return (
     <div>
       <h2 className="font-bold text-xl">Transactions</h2>
-      <p>Table</p>
+      <TxTable data={data} />
     </div>
   );
 }

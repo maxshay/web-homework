@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* GENERAL */
+
 .mainButton {
   @apply px-4 py-1.5 rounded border border-indigo-500 bg-indigo-600 text-white hover:bg-indigo-500 hover:border-indigo-400 text-left;
+}
+
+/* NAVIGATION */
+
+.lineAround {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+
+  @apply font-bold text-gray-300 select-none;
+}
+.lineAround:before,
+.lineAround:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 1px;
+  content: "\a0";
+
+  @apply bg-gray-300;
+}
+.lineAround:before {
+  margin-left: -55%;
+  text-align: right;
+}
+.lineAround:after {
+  margin-left: 5%;
+  text-align: left;
+}
+.loginButtonPositioning {
+  position: absolute;
+  top: 0;
+  right: -100%;
 }
