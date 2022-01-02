@@ -4,12 +4,17 @@ export const GetTransactions = gql`
   query GetTransactions {
     transactions {
       id
-      user_id
+      userId
       description
-      merchant_id
+      merchantId
       debit
       credit
       amount
+      category
+      insertedAt
+      user {
+        firstName
+      }
     }
   }
 `;

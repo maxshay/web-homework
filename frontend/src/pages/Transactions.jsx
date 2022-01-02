@@ -27,8 +27,8 @@ function Transactions() {
 
   return (
     <div>
-      <h2 className="font-bold text-xl">Transactions</h2>
-      <TxTable data={data} />
+      <h2 className="font-bold text-xl my-2">All Transactions</h2>
+      <TxTable data={data.transactions} />
     </div>
   );
 }

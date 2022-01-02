@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 
 function UserDetails() {
   const { userId } = useParams();
+
+  // TODO: get user info with graphql
+
   return <p>UserDeatails.jsx for user: {userId}</p>;
 }
 
