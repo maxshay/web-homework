@@ -2,7 +2,10 @@ import React from "react";
 
 import { SpecialNumbers } from "..";
 
+import { useStore } from "../../store";
+
 export function UserTransactionTable({ data }) {
+  const setModal = useStore.getState().setModal;
   return (
     <table className="table-auto mt-5">
       <thead>
@@ -22,6 +25,8 @@ export function UserTransactionTable({ data }) {
           <th className="px-4 py-2 text-blue-600 border border-blue-500">
             Type
           </th>
+          <th className="px-4 py-2 text-blue-600 border border-blue-500"></th>
+          <th className="px-4 py-2 text-blue-600 border border-blue-500"></th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +50,17 @@ export function UserTransactionTable({ data }) {
                 : r.debit === true
                 ? "Debit"
                 : "Other"}
+            </td>
+            <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <button
+                className="underline bg-none"
+                onClick={() => setModal(true)}
+              >
+                Edit
+              </button>
+            </td>
+            <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <button className="underline bg-none">Delete</button>
             </td>
           </tr>
         ))}

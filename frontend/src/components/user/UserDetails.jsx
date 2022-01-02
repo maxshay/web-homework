@@ -5,6 +5,7 @@ import { GetUser } from "../../gql";
 
 import { UserTransactionTable } from "./UserTransactionTable";
 import { UserChart } from "./UserChart";
+import { useStore } from "../../store";
 
 function UserDetails() {
   const { userId } = useParams();
@@ -15,6 +16,8 @@ function UserDetails() {
   } = useQuery(GetUser, {
     variables: { id: userId },
   });
+
+  const setModal = useStore.getState().setModal;
 
   // TODO: get user info with graphql
 
@@ -42,26 +45,43 @@ function UserDetails() {
     <div className="capitalize">
       <hr className="my-5" />
 
-      <p className="mt-4">
-        <span className="inline-block min-w-[200px] font-bold">
-          cusomer id:
-        </span>
-        {userId}
-      </p>
-      <ul>
-        <li className="mt-1">
-          <span className="inline-block min-w-[200px] font-bold">name:</span>
-          {user.firstName} {user.lastName}
-        </li>
-        <li className="mt-1">
-          <span className="inline-block min-w-[200px] font-bold">dob:</span>
-          {user.dob}
-        </li>
-        <li className="mt-1">
-          <span className="inline-block min-w-[200px] font-bold">joined:</span>
-          {user.insertedAt.split("T")[0]}
-        </li>
-      </ul>
+      <div className="grid grid-cols-1 sm:grid-cols-2">
+        <div>
+          <p>
+            <span className="inline-block min-w-[200px] font-bold">
+              cusomer id:
+            </span>
+            {userId}
+          </p>
+          <ul>
+            <li className="mt-1">
+              <span className="inline-block min-w-[200px] font-bold">
+                name:
+              </span>
+              {user.firstName} {user.lastName}
+            </li>
+            <li className="mt-1">
+              <span className="inline-block min-w-[200px] font-bold">dob:</span>
+              {user.dob}
+            </li>
+            <li className="mt-1">
+              <span className="inline-block min-w-[200px] font-bold">
+                joined:
+              </span>
+              {user.insertedAt.split("T")[0]}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button
+            className="mainButton block mr-0 ml-auto"
+            onClick={() => setModal(true)}
+          >
+            Add Transaction
+          </button>
+        </div>
+      </div>
+
       <hr className="my-5" />
       <div className="grid grid-cols-1 sm:grid-cols-2">
         <div>
@@ -72,7 +92,6 @@ function UserDetails() {
         </div>
         <div>
           <h2 className="font-bold text-xl text-gray-400 mt-5">A Breakdown</h2>
-          <p>percentage spent per category vs total spent</p>
           <UserChart data={user.transactions} />
         </div>
       </div>

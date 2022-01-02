@@ -7,6 +7,22 @@ function random_rgba() {
   return `rgb(${r()}, ${r()}, ${r()})`;
 }
 
+const options = {
+  plugins: {
+    tooltip: {
+      callbacks: {
+        label: function ({ label, formattedValue }) {
+          return ` ${label} ${formattedValue}%`;
+        },
+      },
+    },
+    title: {
+      display: true,
+      text: "Percentage spent per category vs total spent",
+    },
+  },
+};
+
 export function UserChart({ data }) {
   const totalPerCategory = {};
 
@@ -38,21 +54,6 @@ export function UserChart({ data }) {
         borderColor: colors,
       },
     ],
-  };
-  const options = {
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function ({ label, formattedValue }) {
-            return ` ${label} ${formattedValue}%`;
-          },
-        },
-      },
-      title: {
-        display: true,
-        text: "Percentage spent per category vs total spent",
-      },
-    },
   };
 
   return <Pie data={chartData} options={options} />;

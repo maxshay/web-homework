@@ -10,6 +10,7 @@ import {
 import { Navigation } from "./components";
 import { UserDetails } from "./components";
 import { MerchantDetails } from "./components";
+import { AddModal } from "./components";
 
 // pages
 import { Home } from "./pages";
@@ -24,10 +25,11 @@ function Layout() {
       <div className="flex flex-row">
         <Navigation />
         <div className="flex-grow">
-          <div className="h-screen overflow-y-scroll">
+          <div className="h-screen overflow-y-scroll relative">
             <div className="px-10">
               <Outlet />
             </div>
+            <AddModal />
           </div>
         </div>
       </div>
