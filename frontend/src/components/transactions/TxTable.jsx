@@ -2,7 +2,7 @@ import React from "react";
 import { arrayOf, string, bool, number, shape } from "prop-types";
 import { Link } from "react-router-dom";
 
-const formatPrice = (amount) => "$" + amount.toString() + ".00";
+import { SpecialNumbers } from "..";
 
 const makeDataTestId = (transactionId, fieldName) =>
   `transaction-${transactionId}-${fieldName}`;
@@ -102,7 +102,8 @@ function TxTable({ data }) {
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"
                 data-testid={makeDataTestId(r.id, "amount")}
               >
-                {formatPrice(r.amount)}
+                {/* {formatPrice(r.amount)} */}
+                <SpecialNumbers amount={r.amount} />
               </td>
               <td
                 className="border border-blue-500 px-4 py-2 text-blue-600 font-medium"

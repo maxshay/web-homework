@@ -71,7 +71,8 @@ function UserDetails() {
           <UserTransactionTable data={user.transactions} />
         </div>
         <div>
-          <h2 className="font-bold text-xl text-gray-400 my-5">A Breakdown</h2>
+          <h2 className="font-bold text-xl text-gray-400 mt-5">A Breakdown</h2>
+          <p>percentage per category spent vs total</p>
           <UserChart data={user.transactions} />
         </div>
       </div>

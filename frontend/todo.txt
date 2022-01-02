@@ -4,7 +4,7 @@
  
 - numbers to roman numerals
 
-- add pie chart for user transactions, spend by category
+- add pie chart for user transactions, spend by category ✅
 
 - add toast notifications
 
