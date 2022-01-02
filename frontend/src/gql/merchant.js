@@ -9,7 +9,6 @@ export const GetMerchant = gql`
       insertedAt
       transactions {
         amount
-        description
         debit
         credit
         category

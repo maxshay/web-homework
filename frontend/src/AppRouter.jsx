@@ -23,7 +23,7 @@ function Layout() {
     <div id="main-content">
       <div className="flex flex-row">
         <Navigation />
-        <div className="p-3">
+        <div className="p-3 flex-grow">
           <Outlet />
         </div>
       </div>

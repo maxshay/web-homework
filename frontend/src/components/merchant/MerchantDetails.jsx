@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GetMerchant } from "../../gql";
 
+const formatPrice = (amount) => "$" + amount.toString() + ".00";
+
 function MerchantDetails() {
   const { merchantId } = useParams();
 
@@ -34,13 +36,17 @@ function MerchantDetails() {
 
   const merchant = data.merchant;
 
+  const transactions = merchant.transactions;
+
   // TODO: get merchant info with graphql
 
   return (
     <div className="capitalize">
+      <hr className="my-5" />
+
       <p className="mt-4">
         <span className="inline-block min-w-[200px] font-bold">
-          cusomer id:
+          merchant id:
         </span>
         {merchantId}
       </p>
@@ -60,6 +66,50 @@ function MerchantDetails() {
           {merchant.insertedAt.split("T")[0]}
         </li>
       </ul>
+
+      <hr className="my-5" />
+      <h2 className="font-bold text-xl text-gray-400 my-5">Your Sales</h2>
+
+      <table className="table-auto mt-5">
+        <thead>
+          <tr>
+            <th className="px-4 py-2 text-blue-600 border border-blue-500">
+              Date
+            </th>
+            <th className="px-4 py-2 text-blue-600 border border-blue-500">
+              Amount
+            </th>
+            <th className="px-4 py-2 text-blue-600 border border-blue-500">
+              Category
+            </th>
+            <th className="px-4 py-2 text-blue-600 border border-blue-500">
+              Type
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((t) => (
+            <tr key={t.id}>
+              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+                {t.insertedAt.replace("T", " ")}
+              </td>
+              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+                {formatPrice(t.amount)}
+              </td>
+              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+                {t.category}
+              </td>
+              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+                {t.credit === true
+                  ? "Credit"
+                  : t.debit === true
+                  ? "Debit"
+                  : "Other"}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

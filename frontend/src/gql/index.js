@@ -1,3 +1,4 @@
 export { GetTransactions } from "./transactions";
-export { GetUser } from "./users";
-export { GetMerchant } from "./merchants";
+export { GetUser } from "./user";
+export { GetMerchant } from "./merchant";
+export { GetAllPeople } from "./other";
