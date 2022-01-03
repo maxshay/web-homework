@@ -13,6 +13,8 @@ import { MerchantDetails } from "./components";
 import { AddModal } from "./components";
 import { EditTransaction } from "./components";
 
+import { useStore } from "./store";
+
 // pages
 import { Home } from "./pages";
 import { Transactions } from "./pages";
@@ -21,8 +23,10 @@ import { Merchant } from "./pages";
 import { Participients } from "./pages";
 
 function Layout() {
+  const lang = useStore((state) => state.lang);
+
   return (
-    <div id="main-content" className="gib">
+    <div id="main-content" className={`${lang === 1 ? "gib" : ""}`}>
       <div className="flex flex-row">
         <Navigation />
         <div className="flex-grow">

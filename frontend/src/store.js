@@ -11,6 +11,9 @@ const useStore = create((set) => ({
     set(() => {
       return { modalOpen: open, modalRef: userId };
     }),
+
+  lang: 0,
+  setLang: (lang) => set({ lang }),
 }));
 
 export { useStore };

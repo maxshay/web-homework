@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 import { useStore } from "../../store";
 
 // https://stackoverflow.com/questions/68431508/how-to-configure-localization-with-react-router-and-i18-directly-from-url-as-lan
 // https://medium.com/how-to-react/setup-multilingual-in-react-js-using-i18n-module-33b1bfbb57cd
 
 export function Toggle() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [lang, setLang] = useState(0);
+  const lang = useStore((state) => state.lang);
+  const setLang = useStore.getState().setLang;
 
   const mode = useStore((state) => state.mode);
   const setMode = useStore.getState().setMode;
@@ -21,10 +19,8 @@ export function Toggle() {
   const handleChangeLang = () => {
     if (lang === 0) {
       setLang(1);
-      navigate({ pathname: location.pathname, search: "?i18n=true" });
     } else {
       setLang(0);
-      navigate({ pathname: location.pathname });
     }
   };
 
