@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "wingding";
+  src: url("wingding.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
 /* GENERAL */
+
+.gib,
+.gib > * {
+  font-family: "wingding";
+}
 
 .mainButton {
   @apply px-4 py-1.5 rounded border border-indigo-500 bg-indigo-600 text-white hover:bg-indigo-500 hover:border-indigo-400 text-left;

@@ -29,7 +29,7 @@ function Participients() {
       <h2 className="font-bold text-xl my-4">All Participients</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
         <div className="col-span-1">
-          <p className="font-bold">Merchants</p>
+          <p className="font-bold">Vendors / Merchants</p>
           <hr className="my-2" />
 
           {data.merchants.map((m) => (

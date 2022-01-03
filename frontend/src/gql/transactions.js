@@ -27,6 +27,7 @@ export const GetTransaction = gql`
       id
       amount
       credit
+      debit
       description
       merchant {
         id
@@ -35,6 +36,30 @@ export const GetTransaction = gql`
       user {
         id
       }
+    }
+  }
+`;
+
+export const UpdateTransaction = gql`
+  mutation UpdateTransaction(
+    $amount: Int!
+    $credit: Boolean!
+    $debit: Boolean!
+    $description: String!
+    $id: ID!
+    $merchantId: ID!
+    $userId: ID!
+  ) {
+    updateTransaction(
+      amount: $amount
+      credit: $credit
+      debit: $debit
+      description: $description
+      id: $id
+      merchantId: $merchantId
+      userId: $userId
+    ) {
+      id
     }
   }
 `;

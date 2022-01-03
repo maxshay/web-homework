@@ -2,7 +2,7 @@
 - user edit transaction
 - user delete transaction
  
-- numbers to roman numerals
+- numbers to roman numerals ✅
 
 - add pie chart for user transactions, spend by category ✅
 

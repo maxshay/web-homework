@@ -22,7 +22,7 @@ import { Participients } from "./pages";
 
 function Layout() {
   return (
-    <div id="main-content">
+    <div id="main-content" className="gib">
       <div className="flex flex-row">
         <Navigation />
         <div className="flex-grow">
