@@ -7,6 +7,8 @@ import { CreateTransaction, GetMerchants } from "../../gql";
 import { useStore } from "../../store";
 
 export function AddModal() {
+  const modalOpen = useStore((state) => state.modalOpen);
+
   const [onCreateHandler, { data, loading, error }] =
     useMutation(CreateTransaction);
 
@@ -17,7 +19,6 @@ export function AddModal() {
     data: data2 = {},
   } = useQuery(GetMerchants);
 
-  const modalOpen = useStore((state) => state.modalOpen);
   const modalRef = useStore((state) => state.modalRef);
   const setModal = useStore.getState().setModal;
 
@@ -25,6 +26,7 @@ export function AddModal() {
     console.log(values);
   };
 
+  if (!modalOpen) return null;
   if (loading2 || !modalRef) return "loading";
   if (error2) return "error";
 
