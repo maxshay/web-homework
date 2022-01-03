@@ -75,7 +75,7 @@ function UserDetails() {
         <div>
           <button
             className="mainButton block mr-0 ml-auto"
-            onClick={() => setModal(true)}
+            onClick={() => setModal(true, userId)}
           >
             Add Transaction
           </button>

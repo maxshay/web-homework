@@ -6,7 +6,11 @@ const useStore = create((set) => ({
   setMode: (mode) => set({ mode }),
 
   modalOpen: false,
-  setModal: (open) => set({ modalOpen: open }),
+  modalRef: null,
+  setModal: (open, userId) =>
+    set(() => {
+      return { modalOpen: open, modalRef: userId };
+    }),
 }));
 
 export { useStore };

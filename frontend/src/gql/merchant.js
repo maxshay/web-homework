@@ -17,3 +17,12 @@ export const GetMerchant = gql`
     }
   }
 `;
+
+export const GetMerchants = gql`
+  query GetMerchants {
+    merchants {
+      id
+      name
+    }
+  }
+`;

@@ -20,6 +20,8 @@ export const GetTransactions = gql`
   }
 `;
 
+// TODO: get a transaction
+
 export const DeleteTransaction = gql`
   mutation DeleteTransaction($id: ID!) {
     deleteTransaction(id: $id) {
