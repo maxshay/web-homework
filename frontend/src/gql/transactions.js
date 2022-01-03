@@ -21,6 +21,23 @@ export const GetTransactions = gql`
 `;
 
 // TODO: get a transaction
+export const GetTransaction = gql`
+  query GetTransaction($id: ID!) {
+    transaction(id: $id) {
+      id
+      amount
+      credit
+      description
+      merchant {
+        id
+        name
+      }
+      user {
+        id
+      }
+    }
+  }
+`;
 
 export const DeleteTransaction = gql`
   mutation DeleteTransaction($id: ID!) {

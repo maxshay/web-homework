@@ -38,6 +38,7 @@ defmodule Homework.Transactions do
 
   """
   def get_transaction!(id), do: Repo.get!(Transaction, id)
+  def get_transaction(id), do: Repo.get(Transaction, id)
 
   @doc """
   Creates a transaction.

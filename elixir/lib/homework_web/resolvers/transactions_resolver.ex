@@ -11,6 +11,18 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   end
 
 
+  @doc """
+  Get a transcation
+  """
+  def transaction(_root, %{id: id}, _info) do
+    case Ecto.UUID.cast(id) do
+      {:ok, id} ->
+        {:ok, Transactions.get_transaction(id)}
+
+      :error ->
+        {:error, "invalid id"}
+    end
+  end
 
   @doc """
   Get the user associated with a transaction
