@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useQuery } from "@apollo/client";
-import { GetMerchants, GetTransaction } from "../../gql";
+import { useMutation, useQuery } from "@apollo/client";
+import { GetMerchants, GetTransaction, UpdateTransaction } from "../../gql";
 
 export function EditTransaction() {
+  const [serverMessage, setServerMessage] = useState(null);
+
   const { id } = useParams();
 
   // get merchants
@@ -21,14 +23,41 @@ export function EditTransaction() {
     data: data2 = {},
   } = useQuery(GetMerchants);
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const [onUpdateHandler] = useMutation(UpdateTransaction);
+
+  const handleSubmit = async (values) => {
+    let success = false;
+    const dataSend = values;
+    if (values.type === "credit") {
+      dataSend.credit = true;
+      dataSend.debit = false;
+    } else if (values.type === "debit") {
+      dataSend.debit = true;
+      dataSend.credit = false;
+    } else {
+      dataSend.debit = false;
+      dataSend.credit = false;
+    }
+    dataSend.id = id;
+    try {
+      const { data, error } = await onUpdateHandler({
+        variables: dataSend,
+      });
+      if (error) {
+        setServerMessage({ error: "🛑" + JSON.stringify(error) });
+      } else {
+        setServerMessage({ success: "✅ Transaction record updated" });
+        success = true;
+      }
+    } catch (e) {
+      setServerMessage({ error: "🛑 Error submitting to server" });
+      console.log(e);
+    }
+    return success;
   };
 
   if (loading || loading2) return <div className="mt-5">loading...</div>;
   if (error || error2) return <div className="mt-5">error</div>;
-
-  console.log(data);
 
   return (
     <div>
@@ -47,11 +76,30 @@ export function EditTransaction() {
                   ? "credit"
                   : "other",
               description: data.transaction.description,
+              category: data.transaction.category,
               merchantId: data.transaction.merchant.id,
               userId: data.transaction.user.id,
             }}
             validate={(values) => {
               const errors = {};
+              if (!values.description) {
+                errors.description = "! Description must not be empty";
+              }
+              if (!values.amount) {
+                errors.amount = "! Amount must not be empty";
+              } else {
+                if (values.amount < 0)
+                  errors.amount = "! Amount must be positive non-zero integer";
+              }
+              if (!values.type) {
+                errors.type = "! Payment type must not be empty";
+              }
+              if (!values.category) {
+                errors.category = "! Category must not be empty";
+              }
+              if (!values.merchantId) {
+                errors.merchantId = "! Merchant must not be empty";
+              }
               return errors;
             }}
             onSubmit={(values) => {
@@ -84,6 +132,41 @@ export function EditTransaction() {
                     name="description"
                     component="div"
                     className=" text-red-600 text-sm text-right"
+                  />
+                </div>
+
+                {/* category */}
+                <div className="mt-5">
+                  <div>
+                    <label
+                      htmlFor="category"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Category &#x2a;
+                    </label>
+                    <Field
+                      component="select"
+                      name="category"
+                      id="category"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                      <option value="" label="Select Category" />
+
+                      <option value="food">Food</option>
+                      <option value="health and wellness">
+                        Health and wellness
+                      </option>
+                      <option value="transportation">Transportation</option>
+                      <option value="entertainment">Entertainment</option>
+                      <option value="other">Other</option>
+                    </Field>
+                  </div>
+                </div>
+                <div className="errorMessage__spacing">
+                  <ErrorMessage
+                    name="category"
+                    component="div"
+                    className="text-red-600 text-sm text-right mt-1"
                   />
                 </div>
 
@@ -179,6 +262,16 @@ export function EditTransaction() {
                     Submit
                   </button>
                 </div>
+                {serverMessage?.error && (
+                  <div className="bg-red-400 p-1 mt-2">
+                    {serverMessage.error}
+                  </div>
+                )}
+                {serverMessage?.success && (
+                  <div className="bg-green-400 p-1 mt-2">
+                    {serverMessage.success}
+                  </div>
+                )}
               </Form>
             )}
           </Formik>

@@ -25,7 +25,6 @@ export function AddModal() {
   const handleSubmit = async (values) => {
     let success = false;
     const dataSend = values;
-    console.log(values.type);
     if (values.type === "credit") {
       dataSend.credit = true;
     }

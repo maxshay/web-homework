@@ -31,6 +31,8 @@ export const GetTransaction = gql`
       amount
       credit
       debit
+      category
+
       description
       merchant {
         id
@@ -49,6 +51,7 @@ export const UpdateTransaction = gql`
     $credit: Boolean!
     $debit: Boolean!
     $description: String!
+    $category: String!
     $id: ID!
     $merchantId: ID!
     $userId: ID!
@@ -58,6 +61,8 @@ export const UpdateTransaction = gql`
       credit: $credit
       debit: $debit
       description: $description
+      category: $category
+
       id: $id
       merchantId: $merchantId
       userId: $userId
