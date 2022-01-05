@@ -25,7 +25,7 @@ export function Toggle() {
   };
 
   return (
-    <div className="flex items-center w-full flex-col">
+    <div className="flex w-full flex-col">
       <label htmlFor="toggleA" className="flex items-center cursor-pointer">
         <div className="relative">
           <input
@@ -41,7 +41,10 @@ export function Toggle() {
         <div className="ml-3 text-gray-700 font-medium">Translate</div>
       </label>
 
-      <label htmlFor="toggleB" className="flex items-center cursor-pointer">
+      <label
+        htmlFor="toggleB"
+        className="flex items-center cursor-pointer mt-2"
+      >
         <div className="relative">
           <input
             type="checkbox"

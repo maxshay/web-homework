@@ -28,7 +28,13 @@ function Transactions() {
   return (
     <div>
       <h2 className="font-bold text-xl my-4">All Transactions</h2>
-      <TxTable data={data.transactions} />
+      <div className="relative">
+        <div className="absolute left-0 right-0 bg-red-300 h-full">
+          <div className="overflow-x-scroll">
+            <TxTable data={data.transactions} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -36,8 +36,8 @@ export function AddModal() {
         modalOpen === true ? "" : " hidden"
       }`}
     >
-      <div className="flex justify-center align-middle items-center h-full d">
-        <div className="relative modalMain w-1/2 bg-white rounded shadow">
+      <div className="flex justify-center align-middle items-center h-full">
+        <div className="relative modalMain w-full sm:w-1/2 bg-white rounded shadow">
           <div className="absolute top-4 right-4">
             <button onClick={() => setModal(false)}>Close</button>
           </div>

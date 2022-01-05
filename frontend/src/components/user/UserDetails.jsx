@@ -45,27 +45,29 @@ function UserDetails() {
     <div className="capitalize">
       <hr className="my-5" />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <p>
-            <span className="inline-block min-w-[200px] font-bold">
+            <span className="inline-block sm:min-w-[200px] font-bold">
               cusomer id:
             </span>
             {userId}
           </p>
           <ul>
             <li className="mt-1">
-              <span className="inline-block min-w-[200px] font-bold">
+              <span className="inline-block sm:min-w-[200px] font-bold">
                 name:
               </span>
               {user.firstName} {user.lastName}
             </li>
             <li className="mt-1">
-              <span className="inline-block min-w-[200px] font-bold">dob:</span>
+              <span className="inline-block sm:min-w-[200px] font-bold">
+                dob:
+              </span>
               {user.dob}
             </li>
             <li className="mt-1">
-              <span className="inline-block min-w-[200px] font-bold">
+              <span className="inline-block sm:min-w-[200px] font-bold">
                 joined:
               </span>
               {user.insertedAt.split("T")[0]}
@@ -74,7 +76,7 @@ function UserDetails() {
         </div>
         <div>
           <button
-            className="mainButton block mr-0 ml-auto"
+            className="mainButton block mr-0 sm:ml-auto"
             onClick={() => setModal(true, userId)}
           >
             Add Transaction
@@ -83,14 +85,16 @@ function UserDetails() {
       </div>
 
       <hr className="my-5" />
-      <div className="grid grid-cols-1 sm:grid-cols-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <h2 className="font-bold text-xl text-gray-400 my-5">
             Your Transactions
           </h2>
-          <UserTransactionTable data={user.transactions} />
+          <div className="overflow-x-auto">
+            <UserTransactionTable data={user.transactions} />
+          </div>
         </div>
-        <div>
+        <div className="mb-4">
           <h2 className="font-bold text-xl text-gray-400 mt-5">A Breakdown</h2>
           <UserChart data={user.transactions} />
         </div>

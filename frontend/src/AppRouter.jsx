@@ -30,8 +30,8 @@ function Layout() {
       <div className="flex flex-row">
         <Navigation />
         <div className="flex-grow">
-          <div className="h-screen overflow-y-scroll relative">
-            <div className="px-10">
+          <div className="overflow-auto h-screen relative">
+            <div className="px-2 sm:px-10">
               <Outlet />
             </div>
             <AddModal />

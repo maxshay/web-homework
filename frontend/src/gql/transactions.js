@@ -7,6 +7,9 @@ export const GetTransactions = gql`
       userId
       description
       merchantId
+      merchant {
+        name
+      }
       debit
       credit
       amount

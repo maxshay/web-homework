@@ -8,4 +8,4 @@
 
 - add toast notifications
 
-- i18n setting
+- i18n setting ✅
