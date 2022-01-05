@@ -18,6 +18,7 @@ if config_env() == :prod do
     ssl: true,
   # socket_options: [:inet6],
     url: database_url,
+    database: "d7n708ag8gfc19",
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"),
     migration_timestamps: [type: :utc_datetime],
     migration_primary_key: [name: :id, type: :binary_id]
