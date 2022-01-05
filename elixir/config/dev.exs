@@ -2,13 +2,16 @@ use Mix.Config
 
 # Configure your database
 config :homework, Homework.Repo,
-  username: System.get_env("POSTGRES_USER") || "taxi",
-  password: System.get_env("POSTGRES_PASSWORD") || "taxi",
-  hostname: System.get_env("POSTGRES_HOST") || "localhost",
-  database: System.get_env("POSTGRES_DATABASE") || "homework_dev",
-  port: String.to_integer(System.get_env("POSTGRES_DATABASE") || "5431"),
+  # username: System.get_env("POSTGRES_USER") || "taxi",
+  # password: System.get_env("POSTGRES_PASSWORD") || "taxi",
+  # hostname: System.get_env("POSTGRES_HOST") || "localhost",
+  # database: System.get_env("POSTGRES_DATABASE") || "homework_dev",
+  # port: String.to_integer(System.get_env("POSTGRES_DATABASE") || "5431"),
+
+  ssl: true,
+  url: "postgres://pmeqqixlaulcvk:6cc4e4042d47c84191bbaf976dd96d794cd316eb6a6ed022ba6e6230b1707fd7@ec2-54-172-219-6.compute-1.amazonaws.com:5432/ddo2cf7h04i8b4",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 2
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

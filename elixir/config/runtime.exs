@@ -16,12 +16,9 @@ if config_env() == :prod do
 
   config :homework, HomeworkWeb.Repo,
     ssl: true,
-  # socket_options: [:inet6],
     url: database_url,
-    database: "d7n708ag8gfc19",
-    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"),
-    migration_timestamps: [type: :utc_datetime],
-    migration_primary_key: [name: :id, type: :binary_id]
+    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18")
+
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you

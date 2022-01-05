@@ -57,7 +57,6 @@ config :logger, level: :info
 # and configuration from environment variables.
 # import_config "prod.secret.exs"
 
-
 config :logger, level: :info
 
 config :phoenix, :json_library, Jason
