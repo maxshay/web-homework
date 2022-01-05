@@ -57,7 +57,6 @@ config :logger, level: :info
 # and configuration from environment variables.
 # import_config "prod.secret.exs"
 
-config :kbf, Kbf.Repo, pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"), ssl: true, url: System.get_env("DATABASE_URL")
 
 config :logger, level: :info
 
