@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
-const SERVER_URL = "http://localhost:8000/graphql";
+const SERVER_URL = import.meta.env.BACKEND_URL;
 
 const request = async (operation) => {
   let headers = {};

@@ -1,7 +1,11 @@
 // for tailwindcss config
 module.exports = {
-  mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "../public/index.html"],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+  // content: [
+  //   "./pages/**/*.{js,ts,jsx,tsx}",
+  //   "./components/**/*.{js,ts,jsx,tsx}",
+  //   "../public/index.html",
+  // ],
   theme: {
     extend: {},
   },

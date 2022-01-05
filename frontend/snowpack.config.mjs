@@ -12,6 +12,9 @@ export default {
       dest: "/index.html",
     },
   ],
+  env: {
+    BACKEND_URL: "http://localhost:8000/graphql",
+  },
   optimize: {
     treeshake: true,
   },
