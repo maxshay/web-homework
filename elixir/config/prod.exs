@@ -10,7 +10,10 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :homework, HomeworkWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [schema: "https", host: "web-hw-backend.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  render_errors: [view: HomeworkWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: HomeworkWeb.PubSub,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -52,4 +55,10 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
+
+config :kbf, Kbf.Repo, pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"), ssl: true, url: System.get_env("DATABASE_URL")
+
+config :logger, level: :info
+
+config :phoenix, :json_library, Jason
