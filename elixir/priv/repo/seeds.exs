@@ -9,3 +9,216 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Homework.Repo
+alias Homework.Users.User
+alias Homework.Merchants.Merchant
+alias Homework.Transactions.Transaction
+
+
+general = Repo.insert! %Merchant {
+  name: "General Market",
+  description: "a market for nearly everything",
+}
+
+amazon = Repo.insert! %Merchant {
+  name: "Amazon",
+  description: "the largest online ecommerce platform",
+}
+
+safeway = Repo.insert! %Merchant {
+  name: "Safeway",
+  description: "an american supermarket chain",
+}
+
+
+moosk = Repo.insert! %User {
+  dob: ~D[1971-06-28],
+  first_name: "Elom",
+  last_name: "Moosk"
+}
+
+
+rick = Repo.insert! %User {
+  dob: ~D[1968-03-21],
+  first_name: "Rick",
+  last_name: "Sanchez"
+}
+
+
+leeroy = Repo.insert! %User {
+  dob: ~D[1988-10-02],
+  first_name: "Leeroy",
+  last_name: "Jenkins"
+}
+
+
+Repo.insert! %Transaction {
+  amount: 10000,
+  credit: true,
+  debit: false,
+  description: "rocket ship",
+  category: "transportation",
+  merchant: amazon,
+  user: moosk
+}
+
+
+
+Repo.insert! %Transaction {
+  amount: 4000,
+  credit: true,
+  debit: false,
+  description: "fuel for rocket ship",
+  category: "transportation",
+  merchant: amazon,
+  user: moosk
+}
+
+
+Repo.insert! %Transaction {
+  amount: 1000,
+  credit: true,
+  debit: false,
+  description: "virtual real estate on mars as an nft",
+  category: "other",
+  merchant: general,
+  user: moosk
+}
+
+
+Repo.insert! %Transaction {
+  amount: 15,
+  credit: true,
+  debit: false,
+  description: "tesla keychain",
+  category: "other",
+  merchant: general,
+  user: moosk
+}
+
+
+Repo.insert! %Transaction {
+  amount: 60,
+  credit: true,
+  debit: false,
+  description: "game of thrones, complete series",
+  category: "entertainment",
+  merchant: general,
+  user: moosk
+}
+
+
+
+Repo.insert! %Transaction {
+  amount: 4,
+  credit: true,
+  debit: false,
+  description: "vegan strawberry protein bars",
+  category: "health and wellness",
+  merchant: safeway,
+  user: moosk
+}
+
+
+# leeroy jenkins
+Repo.insert! %Transaction {
+  amount: 500,
+  credit: true,
+  debit: false,
+  description: "pet turtle",
+  category: "other",
+  merchant: general,
+  user: leeroy
+}
+
+Repo.insert! %Transaction {
+  amount: 2000,
+  credit: true,
+  debit: false,
+  description: "aquarium for pet turtle",
+  category: "other",
+  merchant: general,
+  user: leeroy
+}
+
+Repo.insert! %Transaction {
+  amount: 450,
+  credit: true,
+  debit: false,
+  description: "turtle friend for first turtle",
+  category: "other",
+  merchant: general,
+  user: leeroy
+}
+
+Repo.insert! %Transaction {
+  amount: 29,
+  credit: true,
+  debit: false,
+  description: "pull up bars",
+  category: "health and wellness",
+  merchant: amazon,
+  user: leeroy
+}
+
+Repo.insert! %Transaction {
+  amount: 90,
+  credit: false,
+  debit: true,
+  description: "chips",
+  category: "food",
+  merchant: safeway,
+  user: leeroy
+}
+
+Repo.insert! %Transaction {
+  amount: 40,
+  credit: false,
+  debit: false,
+  description: "scooter maintenence",
+  category: "transportation",
+  merchant: general,
+  user: leeroy
+}
+
+
+# rick sanchez
+Repo.insert! %Transaction {
+  amount: 40,
+  credit: true,
+  debit: false,
+  description: "alcohol",
+  category: "health and wellness",
+  merchant: safeway,
+  user: rick
+}
+
+Repo.insert! %Transaction {
+  amount: 12,
+  credit: true,
+  debit: false,
+  description: "birthday present for morty",
+  category: "other",
+  merchant: amazon,
+  user: rick
+}
+
+Repo.insert! %Transaction {
+  amount: 600,
+  credit: true,
+  debit: false,
+  description: "quantum spaceship battery repair",
+  category: "transportation",
+  merchant: general,
+  user: rick
+}
+
+Repo.insert! %Transaction {
+  amount: 8,
+  credit: true,
+  debit: false,
+  description: "netflix subscription",
+  category: "entertainment",
+  merchant: general,
+  user: rick
+}
