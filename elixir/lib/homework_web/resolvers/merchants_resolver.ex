@@ -1,6 +1,5 @@
 defmodule HomeworkWeb.Resolvers.MerchantsResolver do
   alias Homework.Merchants
-  alias Homework.Transactions
 
 
   @doc """
