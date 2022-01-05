@@ -18,6 +18,10 @@
   @apply px-4 py-1.5 rounded border border-indigo-500 bg-indigo-600 text-white hover:bg-indigo-500 hover:border-indigo-400 text-left;
 }
 
+.transactionTableRow {
+  @apply border border-gray-400 px-4 py-2 font-medium whitespace-nowrap text-ellipsis overflow-hidden;
+}
+
 /* NAVIGATION */
 
 .lineAround {

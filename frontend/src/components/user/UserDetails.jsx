@@ -87,7 +87,7 @@ function UserDetails() {
       <hr className="my-5" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <h2 className="font-bold text-xl text-gray-400 my-5">
+          <h2 className="font-bold text-xl text-gray-500 my-5">
             Your Transactions
           </h2>
           <div className="overflow-x-auto">
@@ -95,7 +95,7 @@ function UserDetails() {
           </div>
         </div>
         <div className="mb-4">
-          <h2 className="font-bold text-xl text-gray-400 mt-5">A Breakdown</h2>
+          <h2 className="font-bold text-xl text-gray-500 my-5">A Breakdown</h2>
           <UserChart data={user.transactions} />
         </div>
       </div>

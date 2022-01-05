@@ -27,7 +27,7 @@ function Transactions() {
 
   return (
     <div>
-      <h2 className="font-bold text-xl my-4">All Transactions</h2>
+      <h2 className="font-bold text-xl text-gray-500 my-4">All Transactions</h2>
       <div className="relative">
         <div className="absolute left-0 right-0 bg-red-300 h-full">
           <div className="overflow-x-scroll">

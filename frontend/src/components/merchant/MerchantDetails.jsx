@@ -70,36 +70,28 @@ function MerchantDetails() {
       <hr className="my-5" />
       <h2 className="font-bold text-xl text-gray-400 my-5">Your Sales</h2>
 
-      <table className="table-auto mt-5">
+      <table className="table-auto w-full mt-5">
         <thead>
           <tr>
-            <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              Date
-            </th>
-            <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              Amount
-            </th>
-            <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              Category
-            </th>
-            <th className="px-4 py-2 text-blue-600 border border-blue-500">
-              Type
-            </th>
+            <th className="px-4 py-2 border border-gray-400">Date</th>
+            <th className="px-4 py-2 border border-gray-400">Amount</th>
+            <th className="px-4 py-2 border border-gray-400">Category</th>
+            <th className="px-4 py-2 border border-gray-400">Type</th>
           </tr>
         </thead>
         <tbody>
           {transactions.map((t) => (
             <tr key={t.id}>
-              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <td className="border border-gray-400 px-4 py-2 font-medium">
                 {t.insertedAt.replace("T", " ")}
               </td>
-              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <td className="border border-gray-400 px-4 py-2 font-medium">
                 <SpecialNumbers amount={t.amount} />
               </td>
-              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <td className="border border-gray-400 px-4 py-2 font-medium">
                 {t.category}
               </td>
-              <td className="border border-blue-500 px-4 py-2 text-blue-600 font-medium">
+              <td className="border border-gray-400 px-4 py-2 font-medium">
                 {t.credit === true
                   ? "Credit"
                   : t.debit === true
