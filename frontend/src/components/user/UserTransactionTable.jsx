@@ -3,13 +3,20 @@ import { SpecialNumbers } from "..";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
+import { DeleteTransaction } from "../../gql";
+
 export function UserTransactionTable({ data }) {
   const navigate = useNavigate();
-  // const [onDeleteHandler, { d, loading, error }] = useMutation(DELETE_POST);
+  const [onDeleteHandler] = useMutation(DeleteTransaction);
 
-  const handleDelete = () => {
+  const handleDelete = async (id) => {
     if (confirm("are you sure you want to delete?") == true) {
-      alert("deleted");
+      const { data, error } = onDeleteHandler({ variables: { id } });
+      if (error) {
+        alert("Server error, could not delete record");
+      } else {
+        alert("record deleted");
+      }
     }
   };
 
@@ -57,7 +64,10 @@ export function UserTransactionTable({ data }) {
               </button>
             </td>
             <td className="border border-gray-400 px-4 py-2 font-medium">
-              <button className="underline bg-none" onClick={handleDelete}>
+              <button
+                className="underline bg-none"
+                onClick={() => handleDelete(r.id)}
+              >
                 Delete
               </button>
             </td>
