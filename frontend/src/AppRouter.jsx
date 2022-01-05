@@ -34,7 +34,6 @@ function Layout() {
             <div className="px-2 sm:px-10">
               <Outlet />
             </div>
-            <AddModal />
           </div>
         </div>
       </div>

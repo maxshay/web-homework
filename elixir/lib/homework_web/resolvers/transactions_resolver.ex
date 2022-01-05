@@ -42,7 +42,10 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   Create a new transaction
   """
   def create_transaction(_root, args, _info) do
+    IO.inspect(args)
+
     case Transactions.create_transaction(args) do
+
       {:ok, transaction} ->
         {:ok, transaction}
 

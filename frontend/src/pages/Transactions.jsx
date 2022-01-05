@@ -25,6 +25,8 @@ function Transactions() {
     );
   }
 
+  console.log(data);
+
   return (
     <div>
       <h2 className="font-bold text-xl text-gray-500 my-4">All Transactions</h2>

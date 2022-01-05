@@ -83,6 +83,7 @@ export const CreateTransaction = gql`
     $credit: Boolean!
     $debit: Boolean!
     $description: String!
+    $category: String!
     $merchantId: ID!
     $userId: ID!
   ) {
@@ -91,6 +92,7 @@ export const CreateTransaction = gql`
       credit: $credit
       debit: $debit
       description: $description
+      category: $category
       merchantId: $merchantId
       userId: $userId
     ) {
