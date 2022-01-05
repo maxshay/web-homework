@@ -4,7 +4,7 @@ export default {
     public: "/",
     src: "/dist",
   },
-  plugins: ["@snowpack/plugin-postcss"],
+  plugins: ["@snowpack/plugin-postcss", "@snowpack/plugin-webpack"],
   routes: [
     {
       match: "routes",
