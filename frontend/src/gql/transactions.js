@@ -8,6 +8,7 @@ export const GetTransactions = gql`
       description
       merchantId
       merchant {
+        id
         name
       }
       debit
@@ -16,6 +17,7 @@ export const GetTransactions = gql`
       category
       insertedAt
       user {
+        id
         firstName
         lastName
       }
@@ -104,6 +106,10 @@ export const CreateTransaction = gql`
       id
       amount
       description
+      debit
+      credit
+      category
+      insertedAt
     }
   }
 `;

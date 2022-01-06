@@ -2,8 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useStore } from "../store";
-import { useQuery } from "@apollo/client";
-import { GetUser } from "../gql";
+import { useQuery, useMutation } from "@apollo/client";
+import { GetUser, DeleteTransaction } from "../gql";
 import { UserTransactionTable, UserChart } from "../components";
 
 function User() {
@@ -15,10 +15,9 @@ function User() {
   } = useQuery(GetUser, {
     variables: { id: userId },
   });
+  const [onDeleteHandler] = useMutation(DeleteTransaction);
 
   const setModal = useStore.getState().setModal;
-
-  // TODO: get user info with graphql
 
   if (loading) return <p>Loading...</p>;
 
@@ -39,6 +38,8 @@ function User() {
   if (!data?.user) return <p>No user found</p>;
 
   const user = data.user;
+
+  console.log(user);
 
   return (
     <div className="capitalize">
@@ -92,7 +93,10 @@ function User() {
             Your Transactions
           </h2>
           <div className="overflow-x-auto">
-            <UserTransactionTable data={user.transactions} />
+            <UserTransactionTable
+              data={user.transactions}
+              onDeleteHandler={onDeleteHandler}
+            />
           </div>
         </div>
         <div className="mb-4">

@@ -64,7 +64,7 @@ function Merchant() {
       </ul>
 
       <hr className="my-5" />
-      <h2 className="font-bold text-xl text-gray-400 my-5">Your Sales</h2>
+      <h2 className="font-bold text-xl text-gray-500 my-5">Your Sales</h2>
 
       <MerchantTransactionTable data={data.merchant.transactions} />
     </div>

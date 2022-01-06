@@ -1,14 +1,10 @@
 import React from "react";
 import { SpecialNumbers } from "..";
 import { useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
 
 import { DeleteTransaction } from "../../gql";
 
-export function UserTransactionTable({ data }) {
-  const navigate = useNavigate();
-  const [onDeleteHandler] = useMutation(DeleteTransaction);
-
+export function UserTransactionTable({ data, onDeleteHandler }) {
   const handleDelete = async (id) => {
     if (confirm("are you sure you want to delete?") == true) {
       const { data, error } = onDeleteHandler({ variables: { id } });

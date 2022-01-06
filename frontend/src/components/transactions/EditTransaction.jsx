@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { useMutation, useQuery } from "@apollo/client";
 import { GetTransactionAndMerchants, UpdateTransaction } from "../../gql";
 
 import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 export function EditTransaction() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [serverMessage, setServerMessage] = useState(null);
 
   const { id } = useParams();
@@ -109,8 +113,13 @@ export function EditTransaction() {
               }
               return errors;
             }}
-            onSubmit={(values) => {
-              handleSubmit(values);
+            onSubmit={async (values, { resetForm }) => {
+              const success = await handleSubmit(values);
+              if (success) {
+                navigate({ pathname: location.pathname });
+              } else {
+                resetForm({ values: { ...values } });
+              }
             }}
           >
             {({ isSubmitting }) => (
@@ -186,11 +195,15 @@ export function EditTransaction() {
                 <div className="my-6">
                   <button
                     className="mainButton w-full leading-4 text-center"
-                    style={{ padding: ".75rem" }}
+                    style={{ padding: ".75rem", textAlign: "center" }}
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Submit
+                    {isSubmitting === true ? (
+                      <div className="spinner-border"></div>
+                    ) : (
+                      "Update"
+                    )}
                   </button>
                 </div>
 

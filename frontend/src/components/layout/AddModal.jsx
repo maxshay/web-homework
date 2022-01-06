@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Formik, Form } from "formik";
-import { useMutation, useQuery } from "@apollo/client";
-import { CreateTransaction, GetMerchants } from "../../gql";
 
+import { Formik, Form } from "formik";
 import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
+
+import { useMutation, useQuery } from "@apollo/client";
+import { CreateTransaction, GetMerchants, GetUser } from "../../gql";
+import produce from "immer";
 
 import { useStore } from "../../store";
 
@@ -38,6 +40,22 @@ export function AddModal() {
     try {
       const { data, error } = await onCreateHandler({
         variables: dataSend,
+        update: (store, { data }) => {
+          const userData = store.readQuery({
+            query: GetUser,
+            variables: { id: modalRef },
+          });
+          store.writeQuery({
+            query: GetUser,
+            variables: { id: modalRef },
+            data: produce(userData, (x) => {
+              x.user.transactions = [
+                ...userData.user.transactions,
+                data.createTransaction,
+              ];
+            }),
+          });
+        },
       });
       if (error) {
         setServerMessage({ error: "🛑" + JSON.stringify(error) });
