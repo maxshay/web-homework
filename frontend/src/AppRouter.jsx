@@ -8,9 +8,7 @@ import {
 
 // components
 import { Navigation } from "./components";
-import { UserDetails } from "./components";
 import { MerchantDetails } from "./components";
-import { AddModal } from "./components";
 import { EditTransaction } from "./components";
 
 import { useStore } from "./store";
@@ -50,9 +48,7 @@ function App() {
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/transaction/:id" element={<EditTransaction />} />
           <Route path="/participients" element={<Participients />} />
-          <Route path="/user" element={<User />}>
-            <Route path=":userId" element={<UserDetails />} />
-          </Route>
+          <Route path="/user/:userId" element={<User />} />
 
           <Route path="/merchant" element={<Merchant />}>
             <Route path=":merchantId" element={<MerchantDetails />} />
