@@ -24,7 +24,10 @@ function Navigation() {
                 </li>
                 <li>
                   <Link to="/">
-                    <button className="mainButton w-full font-bold">
+                    <button
+                      className="mainButton w-full font-bold"
+                      data-testid="home-link"
+                    >
                       Home
                     </button>
                   </Link>
@@ -36,14 +39,20 @@ function Navigation() {
 
                 <li className="mt-3">
                   <Link to="/transactions">
-                    <button className="mainButton w-full font-bold">
+                    <button
+                      className="mainButton w-full font-bold"
+                      data-testid="transactions-link"
+                    >
                       Transactions
                     </button>
                   </Link>
                 </li>
                 <li className="mt-3">
-                  <Link to="/participients">
-                    <button className="mainButton w-full font-bold">
+                  <Link to="/participants">
+                    <button
+                      className="mainButton w-full font-bold"
+                      data-testid="participants-link"
+                    >
                       Users &amp; Vendors
                     </button>
                   </Link>

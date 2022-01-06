@@ -53,9 +53,9 @@ function TxTable({ data }) {
             >
               <Link
                 className="text-blue-500 hover:text-blue-600 underline"
-                to={`/user/${r.userId}`}
+                to={`/user/${r.user.id}`}
               >
-                {r.userId}
+                {r.user.id}
               </Link>
             </td>
             <td
@@ -64,7 +64,7 @@ function TxTable({ data }) {
             >
               <Link
                 className="text-blue-500 hover:text-blue-600 underline"
-                to={`/user/${r.userId}`}
+                to={`/user/${r.user.id}`}
               >
                 {r.user.firstName} {r.user.lastName}
               </Link>
@@ -87,9 +87,9 @@ function TxTable({ data }) {
             >
               <Link
                 className="text-blue-500 hover:text-blue-600 underline"
-                to={`/merchant/${r.merchantId}`}
+                to={`/merchant/${r.merchant.id}`}
               >
-                {r.merchantId}
+                {r.merchant.id}
               </Link>
             </td>
             <td
@@ -98,7 +98,7 @@ function TxTable({ data }) {
             >
               <Link
                 className="text-blue-500 hover:text-blue-600 underline"
-                to={`/merchant/${r.merchantId}`}
+                to={`/merchant/${r.merchant.id}`}
               >
                 {r.merchant.name}
               </Link>

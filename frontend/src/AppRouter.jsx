@@ -17,7 +17,7 @@ import { Home } from "./pages";
 import { Transactions } from "./pages";
 import { User } from "./pages";
 import { Merchant } from "./pages";
-import { Participients } from "./pages";
+import { Participants } from "./pages";
 
 function Layout() {
   const lang = useStore((state) => state.lang);
@@ -38,7 +38,7 @@ function Layout() {
   );
 }
 
-function App() {
+function AppRouter() {
   return (
     <Router>
       <Routes>
@@ -46,7 +46,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/transaction/:id" element={<EditTransaction />} />
-          <Route path="/participients" element={<Participients />} />
+          <Route path="/participants" element={<Participants />} />
           <Route path="/user/:userId" element={<User />} />
 
           <Route path="/merchant/:merchantId" element={<Merchant />} />
@@ -60,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRouter;

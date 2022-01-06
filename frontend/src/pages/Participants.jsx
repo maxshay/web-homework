@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GetAllPeople } from "../gql";
 import { Link } from "react-router-dom";
 
-function Participients() {
+function Participants() {
   const { loading, error, data = {} } = useQuery(GetAllPeople);
 
   if (loading) {
@@ -33,7 +33,6 @@ function Participients() {
         <div className="col-span-1">
           <p className="font-bold">Vendors / Merchants</p>
           <hr className="my-2" />
-
           {data.merchants.map((m) => (
             <div key={m.id}>
               <Link to={`/merchant/${m.id}`}>
@@ -67,4 +66,4 @@ function Participients() {
   );
 }
 
-export { Participients };
+export { Participants };
