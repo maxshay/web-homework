@@ -1,6 +1,5 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
-  extends: "@snowpack/app-scripts-react",
   mount: {
     public: "/",
     src: "/dist",

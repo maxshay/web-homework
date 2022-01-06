@@ -60,7 +60,7 @@ function TxTable({ data }) {
             </td>
             <td
               className="transactionTableRow"
-              data-testid={makeDataTestId(r.id, "userId")}
+              data-testid={makeDataTestId(r.id, "name")}
             >
               <Link
                 className="text-blue-500 hover:text-blue-600 underline"
