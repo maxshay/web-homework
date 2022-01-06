@@ -7,11 +7,7 @@ import { GetTransactionAndMerchants, UpdateTransaction } from "../../gql";
 import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
 
-import { useNavigate, useLocation } from "react-router-dom";
-
 export function EditTransaction() {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [serverMessage, setServerMessage] = useState(null);
 
   const { id } = useParams();
@@ -28,6 +24,7 @@ export function EditTransaction() {
   const [onUpdateHandler] = useMutation(UpdateTransaction);
 
   const handleSubmit = async (values) => {
+    setServerMessage(null);
     let success = false;
     const dataSend = values;
     if (values.type === "credit") {
@@ -115,11 +112,7 @@ export function EditTransaction() {
             }}
             onSubmit={async (values, { resetForm }) => {
               const success = await handleSubmit(values);
-              if (success) {
-                navigate({ pathname: location.pathname });
-              } else {
-                resetForm({ values: { ...values } });
-              }
+              if (!success) resetForm({ values: { ...values } });
             }}
           >
             {({ isSubmitting }) => (

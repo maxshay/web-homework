@@ -2,16 +2,37 @@ import React from "react";
 import { SpecialNumbers } from "..";
 import { useMutation } from "@apollo/client";
 
-import { DeleteTransaction } from "../../gql";
+import { DeleteTransaction, GetUser } from "../../gql";
+import { useNavigate } from "react-router-dom";
+import produce from "immer";
 
-export function UserTransactionTable({ data, onDeleteHandler }) {
+export function UserTransactionTable({ data, userId }) {
+  const navigate = useNavigate();
+  const [onDeleteHandler] = useMutation(DeleteTransaction);
+
   const handleDelete = async (id) => {
     if (confirm("are you sure you want to delete?") == true) {
-      const { data, error } = onDeleteHandler({ variables: { id } });
+      const { data, error } = onDeleteHandler({
+        variables: { id },
+        update: (store, { data }) => {
+          const userData = store.readQuery({
+            query: GetUser,
+            variables: { id: userId },
+          });
+
+          store.writeQuery({
+            query: GetUser,
+            variables: { id: userId },
+            data: produce(userData, (x) => {
+              x.user.transactions = x.user.transactions.filter(
+                (t) => t.id !== data.deleteTransaction.id
+              );
+            }),
+          });
+        },
+      });
       if (error) {
         alert("Server error, could not delete record");
-      } else {
-        alert("record deleted");
       }
     }
   };

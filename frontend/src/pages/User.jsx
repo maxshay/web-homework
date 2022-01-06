@@ -1,10 +1,10 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useStore } from "../store";
-import { useQuery, useMutation } from "@apollo/client";
-import { GetUser, DeleteTransaction } from "../gql";
+import { useQuery } from "@apollo/client";
+import { GetUser } from "../gql";
 import { UserTransactionTable, UserChart } from "../components";
+import { AddModal } from "../components";
 
 function User() {
   const { userId } = useParams();
@@ -15,7 +15,6 @@ function User() {
   } = useQuery(GetUser, {
     variables: { id: userId },
   });
-  const [onDeleteHandler] = useMutation(DeleteTransaction);
 
   const setModal = useStore.getState().setModal;
 
@@ -38,8 +37,6 @@ function User() {
   if (!data?.user) return <p>No user found</p>;
 
   const user = data.user;
-
-  console.log(user);
 
   return (
     <div className="capitalize">
@@ -93,10 +90,7 @@ function User() {
             Your Transactions
           </h2>
           <div className="overflow-x-auto">
-            <UserTransactionTable
-              data={user.transactions}
-              onDeleteHandler={onDeleteHandler}
-            />
+            <UserTransactionTable data={user.transactions} userId={userId} />
           </div>
         </div>
         <div className="mb-4">
@@ -104,6 +98,7 @@ function User() {
           <UserChart data={user.transactions} />
         </div>
       </div>
+      <AddModal />
     </div>
   );
 }

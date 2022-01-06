@@ -29,6 +29,8 @@ export function AddModal() {
 
   // Submit transaction function
   const handleSubmit = async (values) => {
+    setServerMessage(null);
+
     let success = false;
     const dataSend = values;
     if (values.type === "credit") {
@@ -45,6 +47,7 @@ export function AddModal() {
             query: GetUser,
             variables: { id: modalRef },
           });
+
           store.writeQuery({
             query: GetUser,
             variables: { id: modalRef },
