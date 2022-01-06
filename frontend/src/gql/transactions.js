@@ -107,3 +107,29 @@ export const CreateTransaction = gql`
     }
   }
 `;
+
+export const GetTransactionAndMerchants = gql`
+  query GetTransactionAndMerchants($transactionId: ID!) {
+    transaction(id: $transactionId) {
+      id
+      amount
+      credit
+      debit
+      category
+
+      description
+      merchant {
+        id
+        name
+      }
+      user {
+        id
+      }
+    }
+
+    merchants {
+      id
+      name
+    }
+  }
+`;

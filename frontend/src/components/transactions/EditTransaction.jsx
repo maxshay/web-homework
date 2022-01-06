@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useMutation, useQuery } from "@apollo/client";
-import { GetMerchants, GetTransaction, UpdateTransaction } from "../../gql";
+import { GetTransactionAndMerchants, UpdateTransaction } from "../../gql";
 
 import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
@@ -17,14 +17,9 @@ export function EditTransaction() {
     loading,
     error,
     data = {},
-  } = useQuery(GetTransaction, {
-    variables: { id },
+  } = useQuery(GetTransactionAndMerchants, {
+    variables: { transactionId: id },
   });
-  const {
-    loading: loading2,
-    error: error2,
-    data: data2 = {},
-  } = useQuery(GetMerchants);
 
   const [onUpdateHandler] = useMutation(UpdateTransaction);
 
@@ -59,8 +54,17 @@ export function EditTransaction() {
     return success;
   };
 
-  if (loading || loading2) return <div className="mt-5">loading...</div>;
-  if (error || error2) return <div className="mt-5">error</div>;
+  if (loading) return <div className="mt-5">loading...</div>;
+  if (error)
+    return (
+      <div className="mt-5">
+        🛑 error
+        <br />
+        <pre>
+          <code>Could not get transaction or does not exist</code>
+        </pre>
+      </div>
+    );
 
   return (
     <div>
@@ -171,7 +175,7 @@ export function EditTransaction() {
                   title="Merchant"
                   placeholder="Select Merchant"
                   required={true}
-                  options={data2.merchants.map((m) => ({
+                  options={data.merchants.map((m) => ({
                     key: m.id,
                     label: m.name,
                   }))}
