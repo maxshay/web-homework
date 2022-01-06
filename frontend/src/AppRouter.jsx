@@ -8,7 +8,6 @@ import {
 
 // components
 import { Navigation } from "./components";
-import { MerchantDetails } from "./components";
 import { EditTransaction } from "./components";
 
 import { useStore } from "./store";
@@ -50,9 +49,7 @@ function App() {
           <Route path="/participients" element={<Participients />} />
           <Route path="/user/:userId" element={<User />} />
 
-          <Route path="/merchant" element={<Merchant />}>
-            <Route path=":merchantId" element={<MerchantDetails />} />
-          </Route>
+          <Route path="/merchant/:merchantId" element={<Merchant />} />
           <Route
             element={<div className="mt-5">Error 404: page not found</div>}
             path="*"

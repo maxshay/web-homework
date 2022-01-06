@@ -8,6 +8,7 @@ export const GetMerchant = gql`
       description
       insertedAt
       transactions {
+        id
         amount
         debit
         credit
