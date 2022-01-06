@@ -4,7 +4,6 @@ import AppRouter from "./AppRouter.jsx";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./network/apollo-client";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
-import { AddModal } from "./components";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
@@ -12,7 +11,6 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <AppRouter />
-      <AddModal />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

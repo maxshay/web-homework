@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Pie } from "react-chartjs-2";
 
 const r = () => (Math.random() * 256) >> 0;
@@ -23,7 +23,7 @@ const options = {
   },
 };
 
-export function UserChart({ data }) {
+const UserChart = memo(function UserChart({ data }) {
   const totalPerCategory = {};
 
   const categories = Array.from(new Set(data.map((t) => t.category)));
@@ -57,4 +57,6 @@ export function UserChart({ data }) {
   };
 
   return <Pie data={chartData} options={options} />;
-}
+});
+
+export { UserChart };

@@ -11,7 +11,7 @@ import produce from "immer";
 
 import { useStore } from "../../store";
 
-export function AddModal() {
+export function AddModal({ userId, setShowModal }) {
   const [serverMessage, setServerMessage] = useState(null);
   const modalOpen = useStore((state) => state.modalOpen);
 
@@ -23,9 +23,6 @@ export function AddModal() {
     error: error2,
     data: data2 = {},
   } = useQuery(GetMerchants);
-
-  const modalRef = useStore((state) => state.modalRef);
-  const setModal = useStore.getState().setModal;
 
   // Submit transaction function
   const handleSubmit = async (values) => {
@@ -45,12 +42,12 @@ export function AddModal() {
         update: (store, { data }) => {
           const userData = store.readQuery({
             query: GetUser,
-            variables: { id: modalRef },
+            variables: { id: userId },
           });
 
           store.writeQuery({
             query: GetUser,
-            variables: { id: modalRef },
+            variables: { id: userId },
             data: produce(userData, (x) => {
               x.user.transactions = [
                 ...userData.user.transactions,
@@ -73,20 +70,15 @@ export function AddModal() {
     return success;
   };
 
-  if (!modalOpen) return null;
-  if (loading2 || !modalRef) return "loading";
+  if (loading2) return "loading";
   if (error2) return "error";
 
   return ReactDOM.createPortal(
-    <div
-      className={`fixed top-0 left-0 right-0 bottom-0 bg-gray-100 bg-opacity-90${
-        modalOpen === true ? "" : " hidden"
-      }`}
-    >
+    <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-100 bg-opacity-90">
       <div className="flex justify-center align-middle items-center h-full">
         <div className="modalMain relative w-full sm:w-1/2 lg:w-1/4 bg-white rounded shadow">
           <div className="absolute top-4 right-4">
-            <button onClick={() => setModal(false)}>Close</button>
+            <button onClick={() => setShowModal(false)}>Close</button>
           </div>
           <div className="content p-6 h-full">
             <div className="h-full">
@@ -101,7 +93,7 @@ export function AddModal() {
                     category: "",
                     description: "",
                     merchantId: "",
-                    userId: modalRef,
+                    userId: userId,
                   }}
                   validate={(values) => {
                     const errors = {};
@@ -138,7 +130,7 @@ export function AddModal() {
                           category: "",
                           description: "",
                           merchantId: "",
-                          userId: modalRef,
+                          userId: userId,
                         },
                       });
                     else resetForm({ values: { ...values } });

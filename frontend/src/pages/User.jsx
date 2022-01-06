@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useStore } from "../store";
 import { useQuery } from "@apollo/client";
@@ -7,6 +7,7 @@ import { UserTransactionTable, UserChart } from "../components";
 import { AddModal } from "../components";
 
 function User() {
+  const [showModal, setShowModal] = useState(false);
   const { userId } = useParams();
   const {
     loading,
@@ -76,7 +77,7 @@ function User() {
         <div>
           <button
             className="mainButton block mr-0 sm:ml-auto"
-            onClick={() => setModal(true, userId)}
+            onClick={() => setShowModal(true)}
           >
             Add Transaction
           </button>
@@ -98,7 +99,7 @@ function User() {
           <UserChart data={user.transactions} />
         </div>
       </div>
-      <AddModal />
+      {showModal && <AddModal userId={userId} setShowModal={setShowModal} />}
     </div>
   );
 }
