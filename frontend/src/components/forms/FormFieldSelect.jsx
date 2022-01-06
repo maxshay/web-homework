@@ -1,3 +1,4 @@
+import React from "react";
 import { Field, ErrorMessage } from "formik";
 
 function FormFieldSelect({
@@ -27,8 +28,8 @@ function FormFieldSelect({
         >
           <option value="" label={placeholder} />
           {options.map((o) => (
-            <option key={o} value={o}>
-              {o}
+            <option key={o.key} value={o.key}>
+              {o.label}
             </option>
           ))}
         </Field>

@@ -4,6 +4,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useMutation, useQuery } from "@apollo/client";
 import { GetMerchants, GetTransaction, UpdateTransaction } from "../../gql";
 
+import FormFieldSelect from "../forms/FormFieldSelect";
+import FormFieldText from "../forms/FormFieldText";
+
 export function EditTransaction() {
   const [serverMessage, setServerMessage] = useState(null);
 
@@ -109,149 +112,73 @@ export function EditTransaction() {
             {({ isSubmitting }) => (
               <Form>
                 {/* description */}
-                <div className="my-5">
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Description &#x2a;
-                  </label>
-                  <div className="mt-1 relative rounded-md shadow-sm">
-                    <Field
-                      type="text"
-                      name="description"
-                      id="description"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Describe the purchase"
-                    />
-                  </div>
-                </div>
 
-                <div className="errorMessage__spacing">
-                  <ErrorMessage
-                    name="description"
-                    component="div"
-                    className=" text-red-600 text-sm text-right"
-                  />
-                </div>
+                <FormFieldText
+                  name="description"
+                  title="Description"
+                  type="text"
+                  placeholder="Describe the purchase"
+                  className="my-5"
+                  required={true}
+                />
 
                 {/* category */}
-                <div className="mt-5">
-                  <div>
-                    <label
-                      htmlFor="category"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Category &#x2a;
-                    </label>
-                    <Field
-                      component="select"
-                      name="category"
-                      id="category"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="" label="Select Category" />
-
-                      <option value="food">Food</option>
-                      <option value="health and wellness">
-                        Health and wellness
-                      </option>
-                      <option value="transportation">Transportation</option>
-                      <option value="entertainment">Entertainment</option>
-                      <option value="other">Other</option>
-                    </Field>
-                  </div>
-                </div>
-                <div className="errorMessage__spacing">
-                  <ErrorMessage
-                    name="category"
-                    component="div"
-                    className="text-red-600 text-sm text-right mt-1"
-                  />
-                </div>
+                <FormFieldSelect
+                  name="category"
+                  title="Category"
+                  placeholder="Select Category"
+                  required={true}
+                  options={[
+                    { key: "food", label: "Food" },
+                    {
+                      key: "health and wellness",
+                      label: "Health and wellness",
+                    },
+                    { key: "transportation", label: "Transportation" },
+                    { key: "entertainment", label: "Entertainment" },
+                    { key: "other", label: "Other" },
+                  ]}
+                  className="mt-5"
+                />
 
                 {/* amount */}
-                <div className="my-5">
-                  <label
-                    htmlFor="amount"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Amount &#x2a;
-                  </label>
-                  <div className="mt-1 relative rounded-md shadow-sm">
-                    <Field
-                      type="number"
-                      name="amount"
-                      id="amount"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Purchase Price"
-                    />
-                  </div>
-                </div>
-
-                <div className="errorMessage__spacing">
-                  <ErrorMessage
-                    name="amount"
-                    component="div"
-                    className=" text-red-600 text-sm text-right"
-                  />
-                </div>
+                <FormFieldText
+                  name="amount"
+                  title="Amount ($)"
+                  type="number"
+                  placeholder="Purchase Price In Whole Dollars"
+                  className="mt-5"
+                  required={true}
+                />
 
                 {/* type */}
-                <div className="my-5">
-                  <div>
-                    <label
-                      htmlFor="type"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Payment Type &#x2a;
-                    </label>
-                    <Field
-                      component="select"
-                      name="type"
-                      id="type"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="" label="Select Payment Type" />
-
-                      <option value="debit">Debit</option>
-                      <option value="credit">Credit</option>
-                      <option value="other">Other</option>
-                    </Field>
-                  </div>
-                </div>
-                <div className="errorMessage__spacing">
-                  <ErrorMessage
-                    name="type"
-                    component="div"
-                    className=" text-red-600 text-sm text-right"
-                  />
-                </div>
+                <FormFieldSelect
+                  name="type"
+                  title="Payment Type"
+                  placeholder="Select Payment Type"
+                  required={true}
+                  options={[
+                    { key: "debit", label: "Debit" },
+                    { key: "credit", label: "Credit" },
+                    { key: "other", label: "Other" },
+                  ]}
+                  className="mt-5"
+                />
 
                 {/* merchant */}
-                <div className="my-5">
-                  <div>
-                    <label
-                      htmlFor="merchantId"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Merchant &#x2a;
-                    </label>
-                    <Field
-                      component="select"
-                      name="merchantId"
-                      id="merchantId"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-sm shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="" label="Select Merchant" />
-                      {data2.merchants.map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name}
-                        </option>
-                      ))}
-                    </Field>
-                  </div>
-                </div>
+                <FormFieldSelect
+                  name="merchantId"
+                  title="Merchant"
+                  placeholder="Select Merchant"
+                  required={true}
+                  options={data2.merchants.map((m) => ({
+                    key: m.id,
+                    label: m.name,
+                  }))}
+                  className="mt-5"
+                />
+
+                {/* submit */}
                 <div className="my-6">
                   <button
                     className="mainButton w-full leading-4 text-center"
@@ -262,6 +189,8 @@ export function EditTransaction() {
                     Submit
                   </button>
                 </div>
+
+                {/* server messages */}
                 {serverMessage?.error && (
                   <div className="bg-red-400 p-1 mt-2">
                     {serverMessage.error}
@@ -276,7 +205,6 @@ export function EditTransaction() {
             )}
           </Formik>
         </div>
-        <div></div>
       </div>
     </div>
   );
