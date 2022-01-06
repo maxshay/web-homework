@@ -1,5 +1,6 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
+  extends: "@snowpack/app-scripts-react",
   mount: {
     public: "/",
     src: "/dist",
@@ -23,6 +24,9 @@ export default {
     port: 3000,
     hostname: "localhost",
     tailwindConfig: "./tailwind.config.js",
+  },
+  testOptions: {
+    files: ["src/**/*.@(spec|test).*"],
   },
   buildOptions: {
     out: "build",
