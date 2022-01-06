@@ -38,7 +38,9 @@ export function Toggle() {
           <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
           <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
         </div>
-        <div className="ml-3 text-gray-700 font-medium">Translate</div>
+        <div className="ml-3 text-gray-700 font-medium overflow-hidden text-ellipsis whitespace-nowrap">
+          Translate
+        </div>
       </label>
 
       <label
@@ -56,7 +58,9 @@ export function Toggle() {
           <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
           <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
         </div>
-        <div className="ml-3 text-gray-700 font-medium">Roman Numerals</div>
+        <div className="ml-3 text-gray-700 font-medium overflow-hidden text-ellipsis whitespace-nowrap">
+          Roman Numerals
+        </div>
       </label>
     </div>
   );
