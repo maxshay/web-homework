@@ -12,7 +12,7 @@ config :homework,
 
 
 cors_whitelist_str =
-  System.get_env("CORS_WHITELIST") || "http://localhost:3000"
+  System.get_env("CORS_WHITELIST") || "*"
 
 
 config :cors_plug,

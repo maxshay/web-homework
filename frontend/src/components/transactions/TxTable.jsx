@@ -9,7 +9,7 @@ const makeDataTestId = (transactionId, fieldName) =>
 
 function TxTable({ data }) {
   return (
-    <table className="table-fixed w-full mb-2">
+    <table className="w-full mb-2">
       <thead>
         <tr>
           <th className="px-4 py-2 border border-gray-400 max-w-[100px] text-ellipsis overflow-hidden">

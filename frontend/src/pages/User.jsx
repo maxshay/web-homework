@@ -85,7 +85,7 @@ function User() {
       </div>
 
       <hr className="my-5" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <h2 className="font-bold text-xl text-gray-500 my-5">
             Your Transactions
