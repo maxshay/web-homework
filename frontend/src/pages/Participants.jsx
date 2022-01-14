@@ -29,7 +29,7 @@ function Participants() {
       <h2 className="font-bold text-xl text-gray-500 my-4">
         All Participients
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-4 mt-4">
         <div className="col-span-1">
           <p className="font-bold">Vendors / Merchants</p>
           <hr className="my-2" />
@@ -45,7 +45,7 @@ function Participants() {
           ))}
         </div>
         <div className="col-span-1">
-          <p className="font-bold">Users / Customers</p>
+          <p className="font-bold mt-4 xl:mt-0">Users / Customers</p>
           <hr className="my-2" />
 
           {data.users.map((u) => (

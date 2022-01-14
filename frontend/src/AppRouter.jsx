@@ -28,7 +28,7 @@ function Layout() {
         <Navigation />
         <div className="flex-grow">
           <div className="overflow-auto h-screen relative">
-            <div className="px-2 lg:px-4 2xl:px-8">
+            <div className="px-4 lg:px-6 2xl:px-8">
               <Outlet />
             </div>
           </div>

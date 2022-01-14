@@ -72,7 +72,7 @@ export function UserTransactionTable({ data, userId }) {
                 ? "Debit"
                 : "Other"}
             </td>
-            <td className="border border-gray-400 px-4 py-2font-medium">
+            <td className="border border-gray-400 px-4 py-2 font-medium">
               <button
                 className="underline bg-none"
                 onClick={() => navigate(`/transaction/${r.id}`)}

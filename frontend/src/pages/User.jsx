@@ -45,7 +45,7 @@ function User() {
 
       <hr className="my-5" />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-4">
         <div>
           <p>
             <span className="inline-block sm:min-w-[200px] font-bold">
@@ -76,7 +76,7 @@ function User() {
         </div>
         <div>
           <button
-            className="mainButton block mr-0 sm:ml-auto"
+            className="mainButton block mr-0 xl:ml-auto mt-4 xl:mt-0"
             onClick={() => setShowModal(true)}
           >
             Add Transaction
@@ -85,7 +85,7 @@ function User() {
       </div>
 
       <hr className="my-5" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-4 mb-4">
         <div>
           <h2 className="font-bold text-xl text-gray-500 my-5">
             Your Transactions

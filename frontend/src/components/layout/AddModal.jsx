@@ -74,16 +74,19 @@ export function AddModal({ userId, setShowModal }) {
   if (error2) return "error";
 
   return ReactDOM.createPortal(
-    <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-100 bg-opacity-90">
-      <div className="flex justify-center align-middle items-center h-full">
-        <div className="modalMain relative w-full sm:w-1/2 lg:w-1/4 bg-white rounded shadow">
-          <div className="absolute top-4 right-4">
-            <button onClick={() => setShowModal(false)}>Close</button>
-          </div>
+    <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-100 bg-opacity-90 z-50">
+      <div className="flex justify-center align-middle items-center md:h-full">
+        <div className="modalMain relative w-full md:w-1/2 xl:w-1/3 2xl:w-1/4 bg-white rounded shadow mx-4 md:mx-0 mt-4 md:mt-0">
           <div className="content p-6 h-full">
             <div className="h-full">
               <div>
-                <h2>Add Transaction</h2>
+                <div className="flex justify-between">
+                  <h2>Add Transaction</h2>
+                  <div>
+                    <button onClick={() => setShowModal(false)}>✖</button>
+                  </div>
+                </div>
+
                 <Formik
                   initialValues={{
                     amount: "",
