@@ -70,6 +70,12 @@ export const UpdateTransaction = gql`
       userId: $userId
     ) {
       id
+      amount
+      description
+      debit
+      credit
+      category
+      insertedAt
     }
   }
 `;

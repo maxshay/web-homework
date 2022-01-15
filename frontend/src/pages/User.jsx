@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useStore } from "../store";
 import { useQuery } from "@apollo/client";
 import { GetUser } from "../gql";
 import { UserTransactionTable, UserChart } from "../components";
@@ -16,8 +15,6 @@ function User() {
   } = useQuery(GetUser, {
     variables: { id: userId },
   });
-
-  const setModal = useStore.getState().setModal;
 
   if (loading)
     return (

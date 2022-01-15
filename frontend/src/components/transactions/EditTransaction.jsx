@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { useMutation, useQuery } from "@apollo/client";
-import { GetTransactionAndMerchants, UpdateTransaction } from "../../gql";
+import {
+  GetTransactionAndMerchants,
+  UpdateTransaction,
+  GetUser,
+} from "../../gql";
+import produce from "immer";
 
 import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
 
 export function EditTransaction() {
+  let [searchParams, setSearchParams] = useSearchParams();
   const [serverMessage, setServerMessage] = useState(null);
 
   const { id } = useParams();
+  let userId = searchParams.get("uid");
 
   // get merchants
   const {
@@ -39,10 +46,29 @@ export function EditTransaction() {
     }
     dataSend.id = id;
     try {
-      const { data, error } = await onUpdateHandler({
+      const res = await onUpdateHandler({
         variables: dataSend,
+        update: (store, { data }) => {
+          const userData = store.readQuery({
+            query: GetUser,
+            variables: { id: userId },
+          });
+
+          const newTransactions = produce(userData, (x) => {
+            const transactionId = x.user.transactions.findIndex(
+              (t) => t.id === data.updateTransaction.id
+            );
+            x.user.transactions[transactionId] = data.updateTransaction;
+          });
+
+          store.writeQuery({
+            query: GetUser,
+            variables: { id: userId },
+            data: newTransactions,
+          });
+        },
       });
-      if (error) {
+      if (res.error) {
         setServerMessage({ error: "🛑" + JSON.stringify(error) });
       } else {
         setServerMessage({ success: "✅ Transaction record updated" });

@@ -9,11 +9,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { CreateTransaction, GetMerchants, GetUser } from "../../gql";
 import produce from "immer";
 
-import { useStore } from "../../store";
-
 export function AddModal({ userId, setShowModal }) {
   const [serverMessage, setServerMessage] = useState(null);
-  const modalOpen = useStore((state) => state.modalOpen);
 
   const [onCreateHandler] = useMutation(CreateTransaction);
 
