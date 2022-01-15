@@ -9,7 +9,7 @@ function Participants() {
   if (loading) {
     return (
       <div>
-        <h2 className="font-bold text-xl mt-4">Transactions</h2>
+        <h2 className="font-bold text-xl mt-4">Participants</h2>
         <p>Loading...</p>
       </div>
     );
@@ -18,7 +18,7 @@ function Participants() {
   if (error) {
     return (
       <div>
-        <h2 className="font-bold text-xl mt-4">Transactions</h2>
+        <h2 className="font-bold text-xl mt-4">Participants</h2>
         <p>Error ¯\_(ツ)_/¯</p>
       </div>
     );

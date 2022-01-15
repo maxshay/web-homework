@@ -19,12 +19,18 @@ function User() {
 
   const setModal = useStore.getState().setModal;
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div>
+        <h2 className="font-bold text-xl mt-4">User</h2>
+        <p>Loading...</p>
+      </div>
+    );
 
   if (error)
     return (
       <div>
-        <p>Error ¯\_(ツ)_/¯</p>
+        <p className="mt-4">Error ¯\_(ツ)_/¯</p>
         {error?.graphQLErrors && (
           <pre>
             <code>
