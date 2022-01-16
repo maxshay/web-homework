@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -13,7 +13,8 @@ import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
 
 export function EditTransaction() {
-  let [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
   const [serverMessage, setServerMessage] = useState(null);
 
   const { id } = useParams();
@@ -33,7 +34,7 @@ export function EditTransaction() {
   const handleSubmit = async (values) => {
     setServerMessage(null);
     let success = false;
-    const dataSend = values;
+    const dataSend = { ...values };
     if (values.type === "credit") {
       dataSend.credit = true;
       dataSend.debit = false;
@@ -45,6 +46,7 @@ export function EditTransaction() {
       dataSend.credit = false;
     }
     dataSend.id = id;
+    dataSend.amount = Math.floor(dataSend.amount * 100);
     try {
       const res = await onUpdateHandler({
         variables: dataSend,
@@ -100,7 +102,7 @@ export function EditTransaction() {
         <div className="form col-span-1">
           <Formik
             initialValues={{
-              amount: data.transaction.amount,
+              amount: (data.transaction.amount / 100).toFixed(2),
               credit: data.transaction.credit,
               debit: data.transaction.debit,
               type:

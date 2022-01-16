@@ -9,4 +9,4 @@ export { MerchantTransactionTable } from "./merchant/MerchantTransactionTable";
 export { Navigation } from "./layout/Navigation";
 export { SpecialNumbers } from "./layout/SpecialNumbers";
 export { Toggle } from "./layout/Toggle";
-export { AddModal } from "./layout/AddModal";
+export { AddTransactionModal } from "./layout/AddTransactionModal";

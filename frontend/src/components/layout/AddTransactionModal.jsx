@@ -9,7 +9,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { CreateTransaction, GetMerchants, GetUser } from "../../gql";
 import produce from "immer";
 
-export function AddModal({ userId, setShowModal }) {
+export function AddTransactionModal({ userId, setShowModal }) {
   const [serverMessage, setServerMessage] = useState(null);
 
   const [onCreateHandler] = useMutation(CreateTransaction);
@@ -33,6 +33,7 @@ export function AddModal({ userId, setShowModal }) {
     if (values.type === "debit") {
       dataSend.debit = true;
     }
+    dataSend.amount = dataSend.amount * 100;
     try {
       const { data, error } = await onCreateHandler({
         variables: dataSend,
@@ -173,7 +174,7 @@ export function AddModal({ userId, setShowModal }) {
                         name="amount"
                         title="Amount ($)"
                         type="number"
-                        placeholder="Purchase Price In Whole Dollars"
+                        placeholder="Purchase Price"
                         className="mt-5"
                         required={true}
                       />

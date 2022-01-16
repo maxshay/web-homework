@@ -2,7 +2,7 @@ import React from "react";
 
 import { useStore } from "../../store";
 
-const formatPrice = (amount) => "$" + amount.toString() + ".00";
+const formatPrice = (amount) => "$" + (amount / 100).toFixed(2).toString();
 function romanize(num) {
   if (isNaN(num)) return NaN;
   var digits = String(+num).split(""),

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GetUser } from "../gql";
 import { UserTransactionTable, UserChart } from "../components";
-import { AddModal } from "../components";
+import { AddTransactionModal } from "../components";
 
 function User() {
   const [showModal, setShowModal] = useState(false);
@@ -102,7 +102,9 @@ function User() {
           <UserChart data={user.transactions} />
         </div>
       </div>
-      {showModal && <AddModal userId={userId} setShowModal={setShowModal} />}
+      {showModal && (
+        <AddTransactionModal userId={userId} setShowModal={setShowModal} />
+      )}
     </div>
   );
 }

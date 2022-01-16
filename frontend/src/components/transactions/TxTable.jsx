@@ -40,12 +40,7 @@ function TxTable({ data }) {
               className="transactionTableRow max-w-[100px]"
               data-testid={makeDataTestId(r.id, "id")}
             >
-              <Link
-                className="text-blue-500 hover:text-blue-600 underline"
-                to={`/transaction/${r.id}`}
-              >
-                {r.id}
-              </Link>
+              {r.id}
             </td>
             <td
               className="transactionTableRow max-w-[100px]"
