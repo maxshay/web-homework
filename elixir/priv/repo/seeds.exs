@@ -53,7 +53,7 @@ leeroy = Repo.insert! %User {
 
 
 Repo.insert! %Transaction {
-  amount: 10000,
+  amount: 1000000,
   credit: true,
   debit: false,
   description: "rocket ship",
@@ -65,7 +65,7 @@ Repo.insert! %Transaction {
 
 
 Repo.insert! %Transaction {
-  amount: 4000,
+  amount: 400000,
   credit: true,
   debit: false,
   description: "fuel for rocket ship",
@@ -76,7 +76,7 @@ Repo.insert! %Transaction {
 
 
 Repo.insert! %Transaction {
-  amount: 1000,
+  amount: 100000,
   credit: true,
   debit: false,
   description: "virtual real estate on mars as an nft",
@@ -87,7 +87,7 @@ Repo.insert! %Transaction {
 
 
 Repo.insert! %Transaction {
-  amount: 15,
+  amount: 1500,
   credit: true,
   debit: false,
   description: "tesla keychain",
@@ -98,7 +98,7 @@ Repo.insert! %Transaction {
 
 
 Repo.insert! %Transaction {
-  amount: 60,
+  amount: 6000,
   credit: true,
   debit: false,
   description: "game of thrones, complete series",
@@ -110,7 +110,7 @@ Repo.insert! %Transaction {
 
 
 Repo.insert! %Transaction {
-  amount: 4,
+  amount: 400,
   credit: true,
   debit: false,
   description: "vegan strawberry protein bars",
@@ -122,7 +122,7 @@ Repo.insert! %Transaction {
 
 # leeroy jenkins
 Repo.insert! %Transaction {
-  amount: 500,
+  amount: 50000,
   credit: true,
   debit: false,
   description: "pet turtle",
@@ -132,7 +132,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 2000,
+  amount: 200000,
   credit: true,
   debit: false,
   description: "aquarium for pet turtle",
@@ -142,7 +142,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 450,
+  amount: 45000,
   credit: true,
   debit: false,
   description: "turtle friend for first turtle",
@@ -152,7 +152,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 29,
+  amount: 2900,
   credit: true,
   debit: false,
   description: "pull up bars",
@@ -162,7 +162,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 90,
+  amount: 9000,
   credit: false,
   debit: true,
   description: "chips",
@@ -172,7 +172,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 40,
+  amount: 4000,
   credit: false,
   debit: false,
   description: "scooter maintenence",
@@ -184,7 +184,7 @@ Repo.insert! %Transaction {
 
 # rick sanchez
 Repo.insert! %Transaction {
-  amount: 40,
+  amount: 4000,
   credit: true,
   debit: false,
   description: "alcohol",
@@ -194,7 +194,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 12,
+  amount: 1200,
   credit: true,
   debit: false,
   description: "birthday present for morty",
@@ -204,7 +204,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 600,
+  amount: 60000,
   credit: true,
   debit: false,
   description: "quantum spaceship battery repair",
@@ -214,7 +214,7 @@ Repo.insert! %Transaction {
 }
 
 Repo.insert! %Transaction {
-  amount: 8,
+  amount: 800,
   credit: true,
   debit: false,
   description: "netflix subscription",
