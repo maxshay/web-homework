@@ -13,8 +13,8 @@ export default {
     },
   ],
   env: {
-    BACKEND_URL: "http://localhost:8000/graphql",
-    // BACKEND_URL: "http://192.168.1.13:8000/graphql",
+    // BACKEND_URL: "http://localhost:8000/graphql",
+    BACKEND_URL: "http://192.168.1.3:8000/graphql",
   },
   optimize: {
     treeshake: true,

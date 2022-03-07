@@ -1,41 +1,62 @@
+# Script for populating the database. You can run it as:
+#
+#     mix run priv/repo/seeds.exs
+#
+# Inside the script, you can read and write to any of your
+# repositories directly:
+#
+#     Homework.Repo.insert!(%Homework.SomeSchema{})
+#
+# We recommend using the bang functions (`insert!`, `update!`
+# and so on) as they will fail if something goes wrong.
 alias Homework.Repo
+alias Homework.Users.User
+alias Homework.Merchants.Merchant
 alias Homework.Transactions.Transaction
 
-# Only categories
-
-# Food
-# Health and wellness
-# Transportation
-# Entertainment
-# Other
 
 
-# get users
-moosk = Homework.Users.get_user!("1337bd41-58e7-4639-85fe-bf71c1e7315d")
-leeroy = Homework.Users.get_user!("33dede3a-93f2-4324-b098-98602b875a63")
-rick = Homework.Users.get_user!("e56e71a2-3881-482d-aff5-da50e8a55400")
-
-# get merchants
-general = Homework.Merchants.get_merchant!("d3e662ea-e117-4c5d-a6d5-9cd0c815893b")
-amazon = Homework.Merchants.get_merchant!("a6273b10-3e2f-4284-8123-b9ba3d3df5ec")
-safeway = Homework.Merchants.get_merchant!("d6f74820-fac5-48b5-a903-11729f487c83")
 
 
-# moosk
+general = Repo.insert! %Merchant {
+  name: "General Market",
+  description: "a market for nearly everything",
+}
 
-# # done
-# Repo.insert! %Transaction {
-#   amount: 1,
-#   credit: true,
-#   debit: false,
-#   description: "ice cream",
-#   category: "Food",
-#   merchant: safeway,
-#   user: moosk
-# }
+amazon = Repo.insert! %Merchant {
+  name: "Amazon",
+  description: "the largest online ecommerce platform",
+}
+
+safeway = Repo.insert! %Merchant {
+  name: "Safeway",
+  description: "an american supermarket chain",
+}
+
+
+moosk = Repo.insert! %User {
+  dob: ~D[1971-06-28],
+  first_name: "Elom",
+  last_name: "Moosk"
+}
+
+
+rick = Repo.insert! %User {
+  dob: ~D[1968-03-21],
+  first_name: "Rick",
+  last_name: "Sanchez"
+}
+
+
+leeroy = Repo.insert! %User {
+  dob: ~D[1988-10-02],
+  first_name: "Leeroy",
+  last_name: "Jenkins"
+}
+
 
 Repo.insert! %Transaction {
-  amount: 10000,
+  amount: 1000000,
   credit: true,
   debit: false,
   description: "rocket ship",
@@ -44,11 +65,10 @@ Repo.insert! %Transaction {
   user: moosk
 }
 
-:timer.sleep(2000)
 
 
 Repo.insert! %Transaction {
-  amount: 4000,
+  amount: 400000,
   credit: true,
   debit: false,
   description: "fuel for rocket ship",
@@ -57,10 +77,9 @@ Repo.insert! %Transaction {
   user: moosk
 }
 
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 1000,
+  amount: 100000,
   credit: true,
   debit: false,
   description: "virtual real estate on mars as an nft",
@@ -69,10 +88,9 @@ Repo.insert! %Transaction {
   user: moosk
 }
 
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 15,
+  amount: 1500,
   credit: true,
   debit: false,
   description: "tesla keychain",
@@ -81,10 +99,9 @@ Repo.insert! %Transaction {
   user: moosk
 }
 
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 60,
+  amount: 6000,
   credit: true,
   debit: false,
   description: "game of thrones, complete series",
@@ -93,11 +110,10 @@ Repo.insert! %Transaction {
   user: moosk
 }
 
-:timer.sleep(2000)
 
 
 Repo.insert! %Transaction {
-  amount: 4,
+  amount: 400,
   credit: true,
   debit: false,
   description: "vegan strawberry protein bars",
@@ -107,11 +123,9 @@ Repo.insert! %Transaction {
 }
 
 
-:timer.sleep(2000)
-
 # leeroy jenkins
 Repo.insert! %Transaction {
-  amount: 500,
+  amount: 50000,
   credit: true,
   debit: false,
   description: "pet turtle",
@@ -119,10 +133,9 @@ Repo.insert! %Transaction {
   merchant: general,
   user: leeroy
 }
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 2000,
+  amount: 200000,
   credit: true,
   debit: false,
   description: "aquarium for pet turtle",
@@ -131,9 +144,8 @@ Repo.insert! %Transaction {
   user: leeroy
 }
 
-:timer.sleep(2000)
 Repo.insert! %Transaction {
-  amount: 450,
+  amount: 45000,
   credit: true,
   debit: false,
   description: "turtle friend for first turtle",
@@ -141,10 +153,9 @@ Repo.insert! %Transaction {
   merchant: general,
   user: leeroy
 }
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 29,
+  amount: 2900,
   credit: true,
   debit: false,
   description: "pull up bars",
@@ -152,10 +163,9 @@ Repo.insert! %Transaction {
   merchant: amazon,
   user: leeroy
 }
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 90,
+  amount: 9000,
   credit: false,
   debit: true,
   description: "chips",
@@ -163,10 +173,9 @@ Repo.insert! %Transaction {
   merchant: safeway,
   user: leeroy
 }
-:timer.sleep(2000)
 
 Repo.insert! %Transaction {
-  amount: 40,
+  amount: 4000,
   credit: false,
   debit: false,
   description: "scooter maintenence",
@@ -175,11 +184,10 @@ Repo.insert! %Transaction {
   user: leeroy
 }
 
-:timer.sleep(2000)
 
 # rick sanchez
 Repo.insert! %Transaction {
-  amount: 40,
+  amount: 4000,
   credit: true,
   debit: false,
   description: "alcohol",
@@ -188,9 +196,8 @@ Repo.insert! %Transaction {
   user: rick
 }
 
-:timer.sleep(2000)
 Repo.insert! %Transaction {
-  amount: 12,
+  amount: 1200,
   credit: true,
   debit: false,
   description: "birthday present for morty",
@@ -199,9 +206,8 @@ Repo.insert! %Transaction {
   user: rick
 }
 
-:timer.sleep(2000)
 Repo.insert! %Transaction {
-  amount: 600,
+  amount: 60000,
   credit: true,
   debit: false,
   description: "quantum spaceship battery repair",
@@ -210,9 +216,8 @@ Repo.insert! %Transaction {
   user: rick
 }
 
-:timer.sleep(2000)
 Repo.insert! %Transaction {
-  amount: 8,
+  amount: 800,
   credit: true,
   debit: false,
   description: "netflix subscription",
