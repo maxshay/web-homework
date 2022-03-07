@@ -3,6 +3,20 @@ defmodule HomeworkWeb.Resolvers.MerchantsResolver do
 
 
   @doc """
+  Search for merchants
+  """
+  def search_merchants(_root, args, _info) do
+    IO.inspect(args)
+    {:ok, Merchants.search_merchants(args)}
+  end
+
+
+
+
+
+
+
+  @doc """
   Get a list of merchants
   """
   def merchants(_root, args, _info) do

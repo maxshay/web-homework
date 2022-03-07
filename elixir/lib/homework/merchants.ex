@@ -8,6 +8,18 @@ defmodule Homework.Merchants do
 
   alias Homework.Merchants.Merchant
 
+  # search db here
+  def search_merchants(%{query: name}) do
+    start_character = String.slice(name, 0..1)
+    from(
+      m in Merchant,
+      where: ilike(m.name, ^"#{start_character}%"),
+      where: fragment("SIMILARITY(?, ?) > 0",  m.name, ^name),
+      order_by: fragment("LEVENSHTEIN(?, ?)", m.name, ^name)
+    )
+    |> Repo.all()
+  end
+
   @doc """
   Returns the list of merchants.
 

@@ -33,6 +33,13 @@ defmodule HomeworkWeb.Schema do
       resolve(&UsersResolver.user/3)
     end
 
+
+    @desc "Search Merchants"
+    field(:search_merchants, list_of(:merchant)) do
+      arg :query, :string
+      resolve(&MerchantsResolver.search_merchants/3)
+    end
+
     @desc "Get a Merchant"
     field(:merchant, :merchant) do
       arg :id, :id
