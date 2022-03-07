@@ -27,3 +27,13 @@ export const GetMerchants = gql`
     }
   }
 `;
+
+export const SearchMerchants = gql`
+  query SearchMerchants($query: String!) {
+    searchMerchants(query: $query) {
+      id
+      name
+      description
+    }
+  }
+`;
