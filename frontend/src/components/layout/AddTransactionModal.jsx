@@ -38,6 +38,8 @@ export function AddTransactionModal({ userId, setShowModal }) {
       const { data, error } = await onCreateHandler({
         variables: dataSend,
         update: (store, { data }) => {
+          console.log(store);
+
           const userData = store.readQuery({
             query: GetUser,
             variables: { id: userId },

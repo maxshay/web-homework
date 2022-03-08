@@ -13,12 +13,9 @@ import FormFieldSelect from "../forms/FormFieldSelect";
 import FormFieldText from "../forms/FormFieldText";
 
 export function EditTransaction() {
-  const navigate = useNavigate();
-  let [searchParams] = useSearchParams();
   const [serverMessage, setServerMessage] = useState(null);
 
-  const { id } = useParams();
-  let userId = searchParams.get("uid");
+  const { id, uid } = useParams();
 
   // get merchants
   const {
@@ -53,8 +50,10 @@ export function EditTransaction() {
         update: (store, { data }) => {
           const userData = store.readQuery({
             query: GetUser,
-            variables: { id: userId },
+            variables: { id: uid },
           });
+
+          if (!userData) return;
 
           const newTransactions = produce(userData, (x) => {
             const transactionId = x.user.transactions.findIndex(
@@ -71,13 +70,13 @@ export function EditTransaction() {
         },
       });
       if (res.error) {
-        setServerMessage({ error: "🛑" + JSON.stringify(error) });
+        setServerMessage({ error: "🛑" + JSON.stringify(res.error) });
       } else {
         setServerMessage({ success: "✅ Transaction record updated" });
         success = true;
       }
     } catch (e) {
-      setServerMessage({ error: "🛑 Error submitting to server" });
+      setServerMessage({ error: `🛑 ${e.message}` });
       console.log(e);
     }
     return success;

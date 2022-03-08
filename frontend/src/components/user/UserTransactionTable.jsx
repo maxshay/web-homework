@@ -3,7 +3,7 @@ import { SpecialNumbers } from "..";
 import { useMutation } from "@apollo/client";
 
 import { DeleteTransaction, GetUser } from "../../gql";
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import produce from "immer";
 
 export function UserTransactionTable({ data, userId }) {
@@ -15,6 +15,8 @@ export function UserTransactionTable({ data, userId }) {
       const { data, error } = onDeleteHandler({
         variables: { id },
         update: (store, { data }) => {
+          console.log(typeof userId, userId);
+
           const userData = store.readQuery({
             query: GetUser,
             variables: { id: userId },
@@ -73,17 +75,9 @@ export function UserTransactionTable({ data, userId }) {
                 : "Other"}
             </td>
             <td className="border border-gray-400 px-4 py-2 font-medium">
-              <button
-                className="underline bg-none"
-                onClick={() =>
-                  navigate({
-                    pathname: `/transaction/${r.id}`,
-                    search: `?uid=${userId}`,
-                  })
-                }
-              >
-                Edit
-              </button>
+              <Link to={`/transaction/${r.id}/${userId}`}>
+                <button className="underline bg-none">Edit</button>
+              </Link>
             </td>
             <td className="border border-gray-400 px-4 py-2 font-medium">
               <button

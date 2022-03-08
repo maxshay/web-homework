@@ -34,7 +34,6 @@ export const GetTransaction = gql`
       credit
       debit
       category
-
       description
       merchant {
         id

@@ -45,7 +45,7 @@ function AppRouter() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/transactions" element={<Transactions />} />
-          <Route path="/transaction/:id" element={<EditTransaction />} />
+          <Route path="/transaction/:id/:uid" element={<EditTransaction />} />
           <Route path="/participants" element={<Participants />} />
           <Route path="/user/:userId" element={<User />} />
 

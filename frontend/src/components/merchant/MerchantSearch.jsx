@@ -31,10 +31,6 @@ const MerchantSearch = () => {
     maxWait: 1500,
   });
 
-  useEffect(() => {
-    console.log(suggestions);
-  }, [suggestions]);
-
   return (
     <>
       <hr className="my-4" />
@@ -47,6 +43,10 @@ const MerchantSearch = () => {
               ? " border-t border-l border-r rounded-t-md"
               : " border rounded-md"
           }`}
+          onBlur={() => {
+            setLoading(false);
+            setSuggestions();
+          }}
           onChange={(e) => dbounce(e)}
         />
         <div
