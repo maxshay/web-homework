@@ -43,10 +43,6 @@ const MerchantSearch = () => {
               ? " border-t border-l border-r rounded-t-md"
               : " border rounded-md"
           }`}
-          onBlur={() => {
-            setLoading(false);
-            setSuggestions();
-          }}
           onChange={(e) => dbounce(e)}
         />
         <div

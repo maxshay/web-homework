@@ -12,25 +12,25 @@ function TxTable({ data }) {
     <table className="w-full mb-2">
       <thead>
         <tr>
-          <th className="px-4 py-2 border border-gray-400 max-w-[100px] text-ellipsis overflow-hidden">
+          <th className="px-4 py-2 border border-gray-300 max-w-[100px] text-ellipsis overflow-hidden">
             Id
           </th>
-          <th className="px-4 py-2 border border-gray-400 max-w-[100px] text-ellipsis overflow-hidden">
+          <th className="px-4 py-2 border border-gray-300 max-w-[100px] text-ellipsis overflow-hidden">
             Customer Id
           </th>
-          <th className="px-4 py-2 border border-gray-400">Customer name</th>
-          <th className="px-4 py-2 border border-gray-400">Desc.</th>
-          <th className="px-4 py-2 border border-gray-400">Category</th>
-          <th className="px-4 py-2 border border-gray-400 max-w-[100px] text-ellipsis overflow-hidden">
+          <th className="px-4 py-2 border border-gray-300">Customer name</th>
+          <th className="px-4 py-2 border border-gray-300">Desc.</th>
+          <th className="px-4 py-2 border border-gray-300">Category</th>
+          <th className="px-4 py-2 border border-gray-300 max-w-[100px] text-ellipsis overflow-hidden">
             Merchant Id
           </th>
-          <th className="px-4 py-2 border border-gray-400">Merchant Name</th>
-          <th className="px-4 py-2 border border-gray-400">Debit</th>
-          <th className="px-4 py-2 border border-gray-400">Credit</th>
-          <th className="px-4 py-2 border border-gray-400 sm:w-[150px]">
+          <th className="px-4 py-2 border border-gray-300">Merchant Name</th>
+          <th className="px-4 py-2 border border-gray-300">Debit</th>
+          <th className="px-4 py-2 border border-gray-300">Credit</th>
+          <th className="px-4 py-2 border border-gray-300 sm:w-[150px]">
             Amount
           </th>
-          <th className="px-4 py-2 border border-gray-400">Date</th>
+          <th className="px-4 py-2 border border-gray-300">Date</th>
         </tr>
       </thead>
       <tbody>

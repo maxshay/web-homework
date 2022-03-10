@@ -30,7 +30,7 @@ function Transactions() {
       <h2 className="font-bold text-xl text-gray-500 my-4">All Transactions</h2>
       <div className="relative">
         <div className="absolute left-0 right-0 bg-red-300 h-full">
-          <div className="overflow-x-scroll">
+          <div className="bg-gray-50 p-4 rounded-md shadow-sm border overflow-x-scroll">
             <TxTable data={data.transactions} />
           </div>
         </div>

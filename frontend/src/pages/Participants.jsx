@@ -32,7 +32,7 @@ function Participants() {
       </h2>
       <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-4 mt-4">
         <div className="col-span-1">
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-gray-50 p-4 rounded-md shadow-sm border">
             <p className="font-bold">Vendors / Merchants</p>
             <MerchantSearch />
             {data.merchants.map((m) => (
@@ -48,7 +48,7 @@ function Participants() {
           </div>
         </div>
         <div className="col-span-1">
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-gray-50 p-4 rounded-md shadow-sm border">
             <p className="font-bold mt-4 xl:mt-0">Users / Customers</p>
             <hr className="my-2" />
 

@@ -49,7 +49,7 @@ function User() {
       <hr className="my-5" />
 
       <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-4">
-        <div>
+        <div className="bg-gray-50 p-4 rounded-md shadow-sm border">
           <p>
             <span className="inline-block sm:min-w-[200px] font-bold">
               cusomer id:
@@ -93,13 +93,15 @@ function User() {
           <h2 className="font-bold text-xl text-gray-500 my-5">
             Your Transactions
           </h2>
-          <div className="overflow-x-auto">
+          <div className="bg-gray-50 p-8 rounded-md shadow-sm border overflow-x-auto">
             <UserTransactionTable data={user.transactions} userId={userId} />
           </div>
         </div>
         <div className="mb-4">
           <h2 className="font-bold text-xl text-gray-500 my-5">A Breakdown</h2>
-          <UserChart data={user.transactions} />
+          <div className="bg-gray-50 p-8 rounded-md shadow-sm border">
+            <UserChart data={user.transactions} />
+          </div>
         </div>
       </div>
       {showModal && (
