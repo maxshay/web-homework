@@ -47,7 +47,8 @@ defmodule Homework.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:absinthe_relay, "~> 1.5"}
     ]
   end
 
