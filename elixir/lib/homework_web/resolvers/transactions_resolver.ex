@@ -12,6 +12,29 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
 
 
   @doc """
+  Get a partial list of transcations
+  with cursor, limit, amount contraints (min, max parameters)
+  """
+
+
+  def p_transactions(_root, args, _info) do
+    min = Map.get(args, :min)
+    max = Map.get(args, :max)
+
+    case {min, max} do
+      {nil, nil} ->
+        {:ok, Transactions.list_partial_transactions(args)}
+      {min, nil} ->
+        {:ok, Transactions.list_transactions_min(args, min)}
+      {nil, max} ->
+        {:ok, Transactions.list_transactions_max(args, max)}
+      {min, max} ->
+        {:ok, Transactions.list_transactions_amount(args, min, max)}
+    end
+  end
+
+
+  @doc """
   Get a transcation
   """
   def transaction(_root, %{id: id}, _info) do

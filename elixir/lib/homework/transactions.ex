@@ -18,6 +18,38 @@ defmodule Homework.Transactions do
 
   """
 
+  def list_transactions_amount(params, min, max) do
+    %{limit: limit, page: page} = params
+
+    Repo.all(
+      from(t in Transaction, where: t.amount >= ^min and t.amount <= ^max, limit: ^limit)
+    )
+  end
+  def list_transactions_min(params, min) do
+    %{limit: limit, page: page} = params
+
+    Repo.all(
+      from(t in Transaction, where: t.amount >= ^min, limit: ^limit)
+    )
+
+  end
+  def list_transactions_max(params, max) do
+    %{limit: limit, page: page} = params
+
+    Repo.all(
+      from(t in Transaction, where: t.amount <= ^max, limit: ^limit)
+    )
+  end
+
+
+  def list_partial_transactions(params) do
+    %{limit: limit, page: page} = params
+
+    Repo.all(
+      from(t in Transaction, limit: ^limit)
+    )
+  end
+
 
   def list_transactions(_args) do
     Repo.all(Transaction)

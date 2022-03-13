@@ -9,11 +9,25 @@ defmodule HomeworkWeb.Schema do
   alias HomeworkWeb.Resolvers.UsersResolver
   import_types(HomeworkWeb.Schemas.Types)
 
+  # https://stackoverflow.com/questions/27971357/what-is-the-pin-operator-for-and-are-elixir-variables-mutable
+  # https://www.youtube.com/watch?v=levbn06WsC0
+  # https://www.youtube.com/watch?v=aDww08ezRZw
+
   query do
     @desc "Get a Transaction"
     field(:transaction, :transaction) do
       arg :id, :id
       resolve(&TransactionsResolver.transaction/3)
+    end
+
+    @desc "Get partial list of Transactions"
+    field(:partial_transactions, list_of(:transaction)) do
+      arg :limit, :integer
+      arg :page, :integer
+      arg :min, :integer
+      arg :max, :integer
+
+      resolve(&TransactionsResolver.p_transactions/3)
     end
 
 
@@ -29,7 +43,7 @@ defmodule HomeworkWeb.Schema do
 
     @desc "Get a User"
     field(:user, :user) do
-      arg :id, :id
+      arg :id, non_null(:id)
       resolve(&UsersResolver.user/3)
     end
 
