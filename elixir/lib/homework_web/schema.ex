@@ -2,18 +2,36 @@ defmodule HomeworkWeb.Schema do
   @moduledoc """
   Defines the graphql schema for this project.
   """
+
   use Absinthe.Schema
+  use Absinthe.Relay.Schema, :modern
 
   alias HomeworkWeb.Resolvers.MerchantsResolver
   alias HomeworkWeb.Resolvers.TransactionsResolver
   alias HomeworkWeb.Resolvers.UsersResolver
+
+
   import_types(HomeworkWeb.Schemas.Types)
 
-  # https://stackoverflow.com/questions/27971357/what-is-the-pin-operator-for-and-are-elixir-variables-mutable
-  # https://www.youtube.com/watch?v=levbn06WsC0
-  # https://www.youtube.com/watch?v=aDww08ezRZw
+  def type_for_schema(%Homework.Transactions.Transaction{}), do: :transaction_type
+
+  def type_for_schema(schema) do
+    raise("non-implemented type case for schema #{schema}")
+  end
+
+  node interface do
+    resolve_type(fn
+      schema, _ ->
+        type_for_schema(schema)
+    end)
+  end
+
 
   query do
+
+    import_fields(:transaction_queries)
+
+
     @desc "Get a Transaction"
     field(:transaction, :transaction) do
       arg :id, :id
