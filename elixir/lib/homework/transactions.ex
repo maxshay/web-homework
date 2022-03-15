@@ -18,6 +18,7 @@ defmodule Homework.Transactions do
 
   """
 
+  """
   def list_transactions_amount(params, min, max) do
     %{limit: limit, page: page} = params
 
@@ -49,6 +50,7 @@ defmodule Homework.Transactions do
       from(t in Transaction, limit: ^limit)
     )
   end
+  """
 
 
   def list_transactions(_args) do

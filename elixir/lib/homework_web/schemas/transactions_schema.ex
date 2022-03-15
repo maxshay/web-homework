@@ -70,7 +70,7 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
 
   object :transaction_queries do
     connection field :list_transactions, node_type: :transaction_type do
-      resolve(&TransactionsResolver.list_transactions/3)
+      resolve(&TransactionsResolver.page_list_transactions/3)
     end
   end
 

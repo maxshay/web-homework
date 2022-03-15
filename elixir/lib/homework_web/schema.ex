@@ -38,6 +38,7 @@ defmodule HomeworkWeb.Schema do
       resolve(&TransactionsResolver.transaction/3)
     end
 
+    """
     @desc "Get partial list of Transactions"
     field(:partial_transactions, list_of(:transaction)) do
       arg :limit, :integer
@@ -47,6 +48,7 @@ defmodule HomeworkWeb.Schema do
 
       resolve(&TransactionsResolver.p_transactions/3)
     end
+    """
 
 
     @desc "Get all Transactions"

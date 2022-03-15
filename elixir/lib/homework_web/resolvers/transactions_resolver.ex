@@ -1,7 +1,6 @@
 defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   import Ecto.Query
   alias Homework.Repo
-  alias Absinthe.Relay
   alias Homework.Merchants
   alias Homework.Transactions
   alias Homework.Transactions.Transaction
@@ -20,13 +19,14 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   with cursor, limit, amount contraints (min, max parameters)
   """
 
-  def list_transactions(_, args, _resolution) do
+  def page_list_transactions(_, args, _resolution) do
     query = from t in Transaction
     {:ok, result} = Absinthe.Relay.Connection.from_query(query, &Repo.all/1, args)
     {:ok, Map.put(result, :count_query, query)}
   end
 
 
+  """
   def p_transactions(_root, args, _info) do
     min = Map.get(args, :min)
     max = Map.get(args, :max)
@@ -42,6 +42,8 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
         {:ok, Transactions.list_transactions_amount(args, min, max)}
     end
   end
+
+  """
 
 
   @doc """

@@ -48,7 +48,8 @@ defmodule Homework.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:httpoison, "~> 1.8"},
-      {:absinthe_relay, "~> 1.5"}
+      {:absinthe_relay, "~> 1.5"},
+      {:csv, "~> 2.4"}
     ]
   end
 
