@@ -7,6 +7,7 @@ defmodule Homework.Merchants.Merchant do
   schema "merchants" do
     field(:description, :string)
     field(:name, :string)
+    field(:tags, {:array, :string})
     has_many(:transactions, Transaction)
 
     timestamps()

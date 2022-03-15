@@ -27,7 +27,7 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
 
 
   """
-  def p_transactions(_root, args, _info) do
+  def p_transactions(_root, _args, _info) do
     min = Map.get(args, :min)
     max = Map.get(args, :max)
 

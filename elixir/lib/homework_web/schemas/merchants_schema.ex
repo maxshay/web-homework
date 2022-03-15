@@ -10,6 +10,7 @@ defmodule HomeworkWeb.Schemas.MerchantsSchema do
     field(:id, non_null(:id))
     field(:name, :string)
     field(:description, :string)
+    field(:tags, type: list_of(:string))
     field(:inserted_at, :naive_datetime)
     field(:updated_at, :naive_datetime)
 
