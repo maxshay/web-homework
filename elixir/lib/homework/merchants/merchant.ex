@@ -16,7 +16,7 @@ defmodule Homework.Merchants.Merchant do
   @doc false
   def changeset(merchant, attrs) do
     merchant
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :description, :tags])
+    |> validate_required([:name, :description, :tags])
   end
 end
