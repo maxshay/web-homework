@@ -2,8 +2,6 @@ use Mix.Config
 
 # Configure your database
 config :homework, Homework.Repo,
-  # ssl: true,
-
   username: System.get_env("POSTGRES_USER") || "taxi",
   password: System.get_env("POSTGRES_PASSWORD") || "taxi",
   hostname: System.get_env("POSTGRES_HOST") || "localhost",

@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :homework, HomeworkWeb.Endpoint,
-  url: [schema: "https", host: "web-hw-backend.herokuapp.com", port: 443],
+  url: [schema: "https", host: "divvy-hw-demo.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   render_errors: [view: HomeworkWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: HomeworkWeb.PubSub,
