@@ -3,7 +3,7 @@ import { SpecialNumbers } from "..";
 
 export function MerchantTransactionTable({ data }) {
   return (
-    <table className="table-auto w-full mt-5">
+    <table className="table-auto w-full">
       <thead>
         <tr>
           <th className="px-4 py-2 font-bold border border-gray-400">Date</th>

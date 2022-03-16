@@ -7,6 +7,7 @@ export const GetMerchant = gql`
       name
       description
       insertedAt
+      tags
       transactions {
         id
         amount
@@ -24,6 +25,8 @@ export const GetMerchants = gql`
     merchants {
       id
       name
+      description
+      tags
     }
   }
 `;

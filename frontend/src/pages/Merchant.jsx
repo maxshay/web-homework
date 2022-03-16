@@ -46,33 +46,51 @@ function Merchant() {
 
       <hr className="my-5" />
 
-      <p className="mt-4">
-        <span className="inline-block min-w-[200px] font-bold">
-          merchant id:
-        </span>
-        {data.merchant.id}
-      </p>
-      <ul>
-        <li className="mt-1">
-          <span className="inline-block min-w-[200px] font-bold">name:</span>
-          {data.merchant.name}
-        </li>
-        <li className="mt-1">
+      <div className="bg-gray-50 p-4 rounded-md shadow-sm border">
+        <p>
           <span className="inline-block min-w-[200px] font-bold">
-            description:
+            merchant id:
           </span>
-          {data.merchant.description}
-        </li>
-        <li className="mt-1">
-          <span className="inline-block min-w-[200px] font-bold">joined:</span>
-          {data.merchant.insertedAt.split("T")[0]}
-        </li>
-      </ul>
+          {data.merchant.id}
+        </p>
+        <ul>
+          <li className="mt-1">
+            <span className="inline-block min-w-[200px] font-bold">name:</span>
+            {data.merchant.name}
+          </li>
+          <li className="mt-1">
+            <span className="inline-block min-w-[200px] font-bold">
+              description:
+            </span>
+            {data.merchant.description}
+          </li>
+          <li className="mt-1">
+            <span className="inline-block min-w-[200px] font-bold">
+              joined:
+            </span>
+            {data.merchant.insertedAt.split("T")[0]}
+          </li>
+          <li className="mt-1">
+            <span className="inline-block min-w-[200px] font-bold">tags:</span>
+            {/* {JSON.stringify(data.merchant.tags)} */}
+            {data.merchant.tags?.map((t) => (
+              <span
+                key={t}
+                className="border rounded bg-blue-500 text-white font-bold px-1 border-blue-600 mr-2"
+              >
+                {t}
+              </span>
+            ))}
+          </li>
+        </ul>
+      </div>
 
       <hr className="my-5" />
       <h2 className="font-bold text-xl text-gray-500 my-5">Your Sales</h2>
 
-      <MerchantTransactionTable data={data.merchant.transactions} />
+      <div className="bg-gray-50 p-4 rounded-md shadow-sm border">
+        <MerchantTransactionTable data={data.merchant.transactions} />
+      </div>
     </div>
   );
 }
