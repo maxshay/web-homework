@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-export const GetTransactions = gql`
-  query GetTransactions {
+export const GetAllTransactions = gql`
+  query GetAllTransactions {
     transactions {
       id
       userId
@@ -20,6 +20,52 @@ export const GetTransactions = gql`
         id
         firstName
         lastName
+      }
+    }
+  }
+`;
+
+export const GetTransactions = gql`
+  query GetTransactions(
+    $first: Int
+    $last: Int
+    $after: String
+    $before: String
+  ) {
+    listTransactions(
+      first: $first
+      last: $last
+      after: $after
+      before: $before
+    ) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          userId
+          description
+          merchantId
+          merchant {
+            id
+            name
+          }
+          debit
+          credit
+          amount
+          category
+          insertedAt
+          user {
+            id
+            firstName
+            lastName
+          }
+        }
       }
     }
   }

@@ -1,3 +1,4 @@
+export { GetAllTransactions } from "./transactions";
 export { GetTransactions } from "./transactions";
 export { GetTransaction } from "./transactions";
 export { DeleteTransaction } from "./transactions";

@@ -15,6 +15,7 @@ import { useStore } from "./store";
 // pages
 import { Home } from "./pages";
 import { Transactions } from "./pages";
+import { AllTransactions } from "./pages";
 import { User } from "./pages";
 import { Merchant } from "./pages";
 import { Participants } from "./pages";
@@ -45,6 +46,7 @@ function AppRouter() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/all-transactions" element={<AllTransactions />} />
           <Route path="/transaction/:id/:uid" element={<EditTransaction />} />
           <Route path="/participants" element={<Participants />} />
           <Route path="/user/:userId" element={<User />} />

@@ -48,6 +48,16 @@ function Navigation() {
                   </Link>
                 </li>
                 <li className="mt-3">
+                  <Link to="/all-transactions">
+                    <button
+                      className="mainButton w-full font-bold"
+                      data-testid="transactions-link"
+                    >
+                      All Transactions
+                    </button>
+                  </Link>
+                </li>
+                <li className="mt-3">
                   <Link to="/participants">
                     <button
                       className="mainButton w-full font-bold"
