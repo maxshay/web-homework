@@ -13,7 +13,7 @@ defmodule Homework.Merchants do
     start_character = String.slice(name, 0..1)
     from(
       m in Merchant,
-      where: ilike(m.name, ^"#{start_character}%"),
+      where: ilike(m.name, ^"%#{start_character}%"),
       where: fragment("SIMILARITY(?, ?) > 0",  m.name, ^name),
       order_by: fragment("LEVENSHTEIN(?, ?)", m.name, ^name)
     )

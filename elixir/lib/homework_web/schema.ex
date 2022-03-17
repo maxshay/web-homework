@@ -28,7 +28,6 @@ defmodule HomeworkWeb.Schema do
 
 
   query do
-
     import_fields(:transaction_queries)
 
 
@@ -37,19 +36,6 @@ defmodule HomeworkWeb.Schema do
       arg :id, :id
       resolve(&TransactionsResolver.transaction/3)
     end
-
-    """
-    @desc "Get partial list of Transactions"
-    field(:partial_transactions, list_of(:transaction)) do
-      arg :limit, :integer
-      arg :page, :integer
-      arg :min, :integer
-      arg :max, :integer
-
-      resolve(&TransactionsResolver.p_transactions/3)
-    end
-    """
-
 
     @desc "Get all Transactions"
     field(:transactions, list_of(:transaction)) do

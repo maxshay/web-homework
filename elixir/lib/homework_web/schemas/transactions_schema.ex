@@ -9,7 +9,6 @@ defmodule HomeworkWeb.Schemas.TransactionsSchema do
   alias HomeworkWeb.Resolvers.TransactionsResolver
 
 
-  # connection(node_type: :transaction)
   connection node_type: :transaction_type do
     field :total_count, :integer do
       resolve fn parent, _, _ ->

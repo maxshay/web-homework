@@ -26,26 +26,6 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   end
 
 
-  """
-  def p_transactions(_root, _args, _info) do
-    min = Map.get(args, :min)
-    max = Map.get(args, :max)
-
-    case {min, max} do
-      {nil, nil} ->
-        {:ok, Transactions.list_partial_transactions(args)}
-      {min, nil} ->
-        {:ok, Transactions.list_transactions_min(args, min)}
-      {nil, max} ->
-        {:ok, Transactions.list_transactions_max(args, max)}
-      {min, max} ->
-        {:ok, Transactions.list_transactions_amount(args, min, max)}
-    end
-  end
-
-  """
-
-
   @doc """
   Get a transcation
   """
@@ -78,9 +58,7 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   """
   def create_transaction(_root, args, _info) do
     IO.inspect(args)
-
     case Transactions.create_transaction(args) do
-
       {:ok, transaction} ->
         {:ok, transaction}
 
@@ -94,7 +72,6 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   """
   def update_transaction(_root, %{id: id} = args, _info) do
     transaction = Transactions.get_transaction!(id)
-
     case Transactions.update_transaction(transaction, args) do
       {:ok, transaction} ->
         {:ok, transaction}
@@ -108,7 +85,6 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
   Deletes a transaction for an id
   """
   def delete_transaction(_root, %{id: id}, _info) do
-
     case Ecto.UUID.cast(id) do
       {:ok, id} ->
         transaction = Transactions.get_transaction!(id)
@@ -119,7 +95,6 @@ defmodule HomeworkWeb.Resolvers.TransactionsResolver do
           error ->
             {:error, "could not delete transaction: #{inspect(error)}"}
         end
-
       :error ->
         {:error, "invalid id"}
     end

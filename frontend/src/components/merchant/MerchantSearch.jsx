@@ -11,9 +11,10 @@ const MerchantSearch = () => {
 
   const search = async (e) => {
     const query = e.target.value;
-    if (query === "") setSuggestions();
-    else {
-      setLoading(true);
+    if (query === "") {
+      setLoading(false);
+      setSuggestions();
+    } else {
       try {
         const res = await getMerchantsSearch({
           variables: { query },
@@ -37,13 +38,17 @@ const MerchantSearch = () => {
       <div className="relative">
         <input
           type="text"
-          placeholder="search for merchant"
+          placeholder="Search for merchant"
           className={`w-full p-2 outline-none border-gray-300${
             suggestions || loading
               ? " border-t border-l border-r rounded-t-md"
               : " border rounded-md"
           }`}
-          onChange={(e) => dbounce(e)}
+          onChange={(e) => {
+            setSuggestions();
+            setLoading(true);
+            dbounce(e);
+          }}
         />
         <div
           className="absolute w-full bg-white border-l border-r border-b border-gray-300 shadow"
@@ -54,11 +59,6 @@ const MerchantSearch = () => {
           {loading && (
             <div className="text-center p-2 border-t border-gray-300">
               Loading
-            </div>
-          )}
-          {suggestions && suggestions.length === 0 && (
-            <div className="text-center p-2 border-t border-gray-300">
-              Nothing found
             </div>
           )}
           {suggestions &&
