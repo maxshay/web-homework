@@ -11,14 +11,14 @@ config :homework,
   ecto_repos: [Homework.Repo]
 
 
-cors_whitelist_str =
-  System.get_env("CORS_WHITELIST") || "*"
+# cors_whitelist_str =
+#   System.get_env("CORS_WHITELIST") || "*"
 
 
-config :cors_plug,
-  origin: String.split(cors_whitelist_str),
-  max_age: 86400,
-  methods: ["GET", "POST"]
+# config :cors_plug,
+#   origin: String.split(cors_whitelist_str),
+#   max_age: 86400,
+#   methods: ["GET", "POST"]
 
 # Configures the endpoint
 config :homework, HomeworkWeb.Endpoint,

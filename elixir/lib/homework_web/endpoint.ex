@@ -49,7 +49,7 @@ defmodule HomeworkWeb.Endpoint do
     json_decoder: Phoenix.json_library()
   )
 
-  plug CORSPlug
+  plug CORSPlug, origin: ["*"]
 
   plug(Plug.MethodOverride)
   plug(Plug.Head)
