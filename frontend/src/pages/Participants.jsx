@@ -67,6 +67,7 @@ function Participants() {
           </div>
         </div>
       </div>
+      <div className="pt-10"></div>
     </div>
   );
 }

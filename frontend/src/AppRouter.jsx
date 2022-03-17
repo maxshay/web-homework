@@ -24,9 +24,9 @@ function Layout() {
 
   return (
     <div id="main-content" className={`${lang === 1 ? "gib" : ""}`}>
-      <div className="flex flex-row">
+      <div className=" w-full flex flex-row">
         <Navigation />
-        <div className="flex-grow">
+        <div className="grow">
           <div className="overflow-auto h-screen relative">
             <div className="px-4 lg:px-6 2xl:px-8">
               <Outlet />
